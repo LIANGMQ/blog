@@ -1036,11 +1036,11 @@ a {
 .article-entry li code {
   padding: 1px 3px;
   margin: 0 3px;
-  background: #f00;
-  border: 1px solid #ccc;
+  background: #fff;
   font-family: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace;
   word-wrap: break-word;
   font-size: 14px;
+  color: #f60;
 }
 .article-entry blockquote {
   padding: 15px 20px;
