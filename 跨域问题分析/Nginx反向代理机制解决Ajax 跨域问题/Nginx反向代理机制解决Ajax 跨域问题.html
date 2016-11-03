@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>AbunuoのBlog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Nginx反向代理机制解决Ajax 跨域问题
+
+这篇文章主要介绍了Nginx服务器中处理AJAX跨域请求的配置方法讲解,包括Nginx作Apache的反向代理时的配置方法,需要的朋友可以参考下
+
+
+1.什么是跨域以及产生原因　　跨域是指a页面想获取b页面资源，如果a、b页面的协议、域名、端口、子域名不同，或是a页面为ip地址，b页面为域名地址，所进行的访问行动都是跨域的，而浏览器为了安全问题一般都">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AbunuoのBlog">
+<meta property="og:url" content="http://liangmingqing.cn/跨域问题分析/Nginx反向代理机制解决Ajax 跨域问题/Nginx反向代理机制解决Ajax 跨域问题.html">
+<meta property="og:site_name" content="AbunuoのBlog">
+<meta property="og:description" content="Nginx反向代理机制解决Ajax 跨域问题
+
+这篇文章主要介绍了Nginx服务器中处理AJAX跨域请求的配置方法讲解,包括Nginx作Apache的反向代理时的配置方法,需要的朋友可以参考下
+
+
+1.什么是跨域以及产生原因　　跨域是指a页面想获取b页面资源，如果a、b页面的协议、域名、端口、子域名不同，或是a页面为ip地址，b页面为域名地址，所进行的访问行动都是跨域的，而浏览器为了安全问题一般都">
+<meta property="og:image" content="http://liangmingqing.cn/./1478178507007.png">
+<meta property="og:updated_time" content="2016-11-03T13:28:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AbunuoのBlog">
+<meta name="twitter:description" content="Nginx反向代理机制解决Ajax 跨域问题
+
+这篇文章主要介绍了Nginx服务器中处理AJAX跨域请求的配置方法讲解,包括Nginx作Apache的反向代理时的配置方法,需要的朋友可以参考下
+
+
+1.什么是跨域以及产生原因　　跨域是指a页面想获取b页面资源，如果a、b页面的协议、域名、端口、子域名不同，或是a页面为ip地址，b页面为域名地址，所进行的访问行动都是跨域的，而浏览器为了安全问题一般都">
+<meta name="twitter:image" content="http://liangmingqing.cn/./1478178507007.png">
+  
+    <link rel="alternative" href="/atom.xml" title="AbunuoのBlog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/1030.gif">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/head.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Abunuo</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Abunuo" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/3908506607/home" title="weibo">weibo</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://liangmingqing.applinzi.com/build">Cloud</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Abunuo</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/head.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Abunuo</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Abunuo" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/3908506607/home" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/跨域问题分析/Nginx反向代理机制解决Ajax 跨域问题/Nginx反向代理机制解决Ajax 跨域问题.html" class="article-date">
+  	<time datetime="2016-11-03T13:29:44.931Z" itemprop="datePublished">2016-11-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Nginx反向代理机制解决Ajax-跨域问题"><a href="#Nginx反向代理机制解决Ajax-跨域问题" class="headerlink" title="Nginx反向代理机制解决Ajax 跨域问题"></a><p style="text-align:center">Nginx反向代理机制解决Ajax 跨域问题</p></h3><blockquote>
+<ul>
+<li>这篇文章主要介绍了Nginx服务器中处理AJAX跨域请求的配置方法讲解,包括Nginx作Apache的反向代理时的配置方法,需要的朋友可以参考下</li>
+</ul>
+</blockquote>
+<h4 id="1-什么是跨域以及产生原因"><a href="#1-什么是跨域以及产生原因" class="headerlink" title="1.什么是跨域以及产生原因"></a>1.什么是跨域以及产生原因</h4><p>　　跨域是指a页面想获取b页面资源，如果a、b页面的协议、域名、端口、子域名不同，或是a页面为ip地址，b页面为域名地址，所进行的访问行动都是跨域的，而浏览器为了安全问题一般都限制了跨域访问，也就是不允许跨域请求资源。</p>
+<p>跨域情况如下：<br>| URL|    说明| 是否跨域|<br>| :——– | ——–:| :–: |<br>| www.cnblogs.com/a.js<br>www.a.com/b.js | 不同域名 |  是   |<br>| www.a.com/lab/a.js<br>www.a.com/script/b.js  | 同一域名下不同文件夹 |  否   |<br>| www.a.com:8000/a.js<br>www.a.com/b.js| 同一域名，不同端口 |  是   |<br>| www.a.com/a.js<br>www.a.com/b.js| 同一域名，不同协议 |  是  |<br>| www.a.com/a.js<br>70.32.92.74/b.js| 域名和域名对应ip |  是   |<br>| www.a.com/a.js<br>script.a.com/b.js| 主域相同，子域不同 |  是（cookie不可访问）   |<br>| www.a.com/a.js<br>a.com/b.js| 同一域名，不同二级域名（同上） |  是   |</p>
+<h4 id="2-跨域的常见解决方法"><a href="#2-跨域的常见解决方法" class="headerlink" title="2.跨域的常见解决方法"></a>2.跨域的常见解决方法</h4><p>目前来讲没有不依靠服务器端来跨域请求资源的技术</p>
+<p>　　1.jsonp 需要目标服务器配合一个<code>callback</code>函数。</p>
+<p>　　2.window.name+iframe 需要目标服务器响应<code>window.name</code>。</p>
+<p>　　3.window.location.hash+iframe 同样需要目标服务器作处理。</p>
+<p>　　4.html5的<code>postMessage+ifrme</code>这个也是需要目标服务器或者说是目标页面写一个<code>postMessage</code>，主要侧重于前端通讯。</p>
+<p>　　5.CORS  需要服务器设置<code>header ：Access-Control-Allow-Origin</code>。</p>
+<p>　　6.nginx反向代理 这个方法一般很少有人提及，但是他可以不用目标服务器配合，不过需要你搭建一个中转nginx服务器，用于转发请求。</p>
+<p>####3.nginx反向代理解决跨域</p>
+<p>　　上面已经说到，禁止跨域问题其实是浏览器的一种安全行为，而现在的大多数解决方案都是用标签可以跨域访问的这个漏洞或者是技巧去完成，但都少不了目标服务器做相应的改变，而我最近遇到了一个需求是，目标服务器不能给予我一个<code>header</code>，更不可以改变代码返回个<code>script</code>，所以前5种方案都被我否决掉。最后因为我的网站是我自己的主机，所以我决定搭建一个nginx并把相应代码部署在它的下面，由页面请求本域名的一个地址，转由<code>nginx代理</code>处理后返回结果给页面，而且这一切都是同步的。
+　　</p>
+<p>#####下面直接讲解如何配置一个反向代理:</p>
+<p>　首先找到<code>nginx.conf</code>或者<code>nginx.conf.default</code>或者是<code>default</code>里面的这部份<br>　　<img src="./1478178507007.png" alt="Alt text"><br>　其中<code>server</code>代表启动的一个服务，<code>location</code> 是一个定位规则。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">location /｛    #所有以/开头的地址，实际上是所有请求</div><div class="line">	root  html     #去请求../html文件夹里的文件,其中..的路径在nginx里面有定义，安装的时候会有默认路径，详见另一篇博客</div><div class="line">	index  index.html index.htm  #首页响应地址</div><div class="line">｝</div></pre></td></tr></table></figure></p>
+<p>　　从上面可以看出<code>location</code>是<code>nginx</code>用来路由的入口，所以我们接下来要在location里面完成我们的反向代理。<br>　　假如我们我们是www.a.com/html/msg.html 想请求www.b.com/api/?method=1&amp;para=2；<br>　　<br>　　我们的ajax：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">　var url = &apos;http://www.b.com/api/msg?method=1&amp;para=2&apos;；</div><div class="line">   &lt;br&gt;$.ajax(&#123;</div><div class="line">   type: &quot;GET&quot;,</div><div class="line">   url:url,</div><div class="line">   success: function(res)&#123;..&#125;,</div><div class="line">   ....</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>　　上面的请求必然会遇到跨域问题，这时我们需要修改一下我们的请求url，让请求发在nginx的一个url下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var url = &apos;http://www.b.com/api/msg?method=1&amp;para=2&apos;；</div><div class="line">	var proxyurl ＝ &apos;msg?method=1&amp;para=2&apos;；</div><div class="line">	//假如实际地址是 www.c.com/proxy/html/api/msg?method=1&amp;para=2; www.c.com是nginx主机地址</div><div class="line">	 $.ajax(&#123;</div><div class="line">	type: &quot;GET&quot;,</div><div class="line">	url:proxyurl,</div><div class="line">	success: function(res)&#123;..&#125;,</div><div class="line">	....</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>　　再在刚才的路径中匹配到这个请求，我们在location下面再添加一个location。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">location ^~/proxy/html/&#123;</div><div class="line">	rewrite ^/proxy/html/(.*)$ /$1 break;</div><div class="line">	proxy_pass http://www.b.com/;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>以下做一个解释</strong>：<br>1.’^~ /proxy/html/ ‘<br>　　就像上面说的一样是一个匹配规则，用于拦截请求，匹配任何以 <code>/proxy/html/</code>开头的地址，匹配符合以后，停止往下搜索正则。</p>
+<p>2.rewrite ^/proxy/html/(.<em>)$ /$1 break;<br>　　1&gt;. 代表重写拦截进来的请求，并且只能对域名后边的除去传递的参数外的字符串起作用，例如<code>www.c.com/proxy/html/api/msg?method=1&amp;para=2</code>重写。只对<code>/proxy/html/api/msg</code>重写<br>　　2&gt;. rewrite后面的参数是一个简单的正则` ^/proxy/html/(.</em>)$ ,$1<code>代表正则中的第一个(),</code>$2<code>代表第二个()的值,以此类推
+　　3&gt;.</code>break`代表匹配一个之后停止匹配。</p>
+<p>3.proxy_pass</p>
+<p>######　　<em>既是把请求代理到其他主机，其中<code>www.b.com/</code>写法和<code>www.b.com</code>写法的区别如下:</em><br>不带/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">location /html/</div><div class="line">&#123;</div><div class="line">　　proxy_pass http://b.com:8300; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>带/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">location /html/ </div><div class="line">&#123; </div><div class="line">    proxy_pass http://b.com:8300/; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面两种配置，区别只在于proxy_pass转发的路径后是否带 “/”。</p>
+<p>　　针对情况1，如果访问<code>url = server/html/test.jsp</code>，则被nginx代理后，请求路径会便问<code>proxy_pass/html/test.jsp</code>，将<code>test/</code>作为根路径，请求test/路径下的资源。</p>
+<p>　　针对情况2，如果访问<code>url = server/html/test.jsp</code>，则被nginx代理后，请求路径会变为 <code>proxy_pass/test.jsp</code>，直接访问server的根资源。<br>　　<br>修改配置后重启nginx代理就成功了。</p>
+<p><em><p style="text-align:right;"> 转自：<a href="http://www.cnblogs.com/gabrielchen/p/5066120.html" target="_blank" rel="external">http://www.cnblogs.com/gabrielchen/p/5066120.html</a> </p><p></p></em></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2016 Abunuo
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/winnerweb/hexo-Yilia-Smackdown" target="_blank">Yilia(Smackdown)</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
