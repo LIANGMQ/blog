@@ -97,8 +97,6 @@
 							
 								<a class="github" target="_blank" href="https://github.com/Abunuo" title="github">github</a>
 					        
-								<a class="weibo" target="_blank" href="http://weibo.com/u/3908506607/home" title="weibo">weibo</a>
-					        
 						</div>
 					</nav>
 				</section>
@@ -115,7 +113,7 @@
 				<section class="switch-part switch-part3">
 					<div id="js-friends">
 					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://liangmingqing.applinzi.com/build">Cloud</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/winnerweb/hexo-theme-smackdown">smackdown</a>
 			        
 			        </div>
 				</section>
@@ -157,8 +155,6 @@
 					
 						<a class="github" target="_blank" href="https://github.com/Abunuo" title="github">github</a>
 			        
-						<a class="weibo" target="_blank" href="http://weibo.com/u/3908506607/home" title="weibo">weibo</a>
-			        
 				</div>
 			</nav>
 		</header>				
@@ -166,10 +162,10 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-Nginx反向代理机制解决Ajax 跨域问题" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-跨域问题分析/Nginx反向代理机制解决Ajax跨域问题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/11/03/Nginx反向代理机制解决Ajax 跨域问题/" class="article-date">
+      <a href="/2016/11/03/跨域问题分析/Nginx反向代理机制解决Ajax跨域问题/" class="article-date">
   	<time datetime="2016-11-03T14:13:12.537Z" itemprop="datePublished">2016-11-03</time>
 </a>
     </div>
@@ -187,7 +183,7 @@
 </ul>
 </blockquote>
 <h4 id="1-什么是跨域以及产生原因"><a href="#1-什么是跨域以及产生原因" class="headerlink" title="1. 什么是跨域以及产生原因"></a>1. 什么是跨域以及产生原因</h4><p>　　跨域是指a页面想获取b页面资源，如果a、b页面的协议、域名、端口、子域名不同，或是a页面为ip地址，b页面为域名地址，所进行的访问行动都是跨域的，而浏览器为了安全问题一般都限制了跨域访问，也就是不允许跨域请求资源。</p>
-<p>跨域情况如下：<br><img src="./img/1478182149955.png" alt="跨域情况解析" style="margin:0 auto;display:block;"></p>
+<p>跨域情况如下：<br><img src="/img/1478182149955.png" alt="跨域情况解析" style="margin:0 auto;display:block;"></p>
 <h4 id="2-跨域的常见解决方法"><a href="#2-跨域的常见解决方法" class="headerlink" title="2. 跨域的常见解决方法"></a>2. 跨域的常见解决方法</h4><p>目前来讲没有不依靠服务器端来跨域请求资源的技术</p>
 <p>　　1. jsonp 需要目标服务器配合一个<code>callback</code>函数。</p>
 <p>　　2. window.name+iframe 需要目标服务器响应<code>window.name</code>。</p>
@@ -201,8 +197,8 @@
 
 <p>　首先找到<code>nginx.conf</code>或者<code>nginx.conf.default</code>或者是<code>default</code>里面的这部份<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#gzip   on;</div><div class="line">server&#123;</div><div class="line">	listen   80;</div><div class="line">	server_name   localhost;</div><div class="line"></div><div class="line">	#charset koi8-r;</div><div class="line">	#c access_log   /var/log/host.access.log;</div><div class="line"></div><div class="line">	location / &#123;</div><div class="line">		root html;</div><div class="line">		index index.html  index.htm;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>　其中<code>server</code>代表启动的一个服务，<code>location</code> 是一个定位规则。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">location /｛    #所有以/开头的地址，实际上是所有请求</div><div class="line">	root  html     #去请求../html文件夹里的文件,其中..的路径在nginx里面有定义，安装的时候会有默认路径</div><div class="line">	index  index.html index.htm  #首页响应地址</div><div class="line">｝</div></pre></td></tr></table></figure></p>
-<p>　　从上面可以看出<code>location</code>是<code>nginx</code>用来路由的入口，所以我们接下来要在location里面完成我们的反向代理。<br>　　假如我们我们是www.a.com/html/msg.html 想请求www.b.com/api/?method=1&amp;para=2；<br>　　<br>　　我们的ajax：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">　var url = &apos;http://www.b.com/api/msg?method=1&amp;para=2&apos;；</div><div class="line">   &lt;br&gt;$.ajax(&#123;</div><div class="line">   type: &quot;GET&quot;,</div><div class="line">   url:url,</div><div class="line">   success: function(res)&#123;..&#125;,</div><div class="line">   ....</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p>　　上面的请求必然会遇到跨域问题，这时我们需要修改一下我们的请求url，让请求发在nginx的一个url下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var url = &apos;http://www.b.com/api/msg?method=1&amp;para=2&apos;；</div><div class="line">	var proxyurl ＝ &apos;msg?method=1&amp;para=2&apos;；</div><div class="line">	//假如实际地址是 www.c.com/proxy/html/api/msg?method=1&amp;para=2; www.c.com是nginx主机地址</div><div class="line">	 $.ajax(&#123;</div><div class="line">	type: &quot;GET&quot;,</div><div class="line">	url:proxyurl,</div><div class="line">	success: function(res)&#123;..&#125;,</div><div class="line">	....</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>　　从上面可以看出<code>location</code>是<code>nginx</code>用来路由的入口，所以我们接下来要在location里面完成我们的反向代理。<br>　　假如我们我们是www.a.com/html/msg.html 想请求www.b.com/api/?method=1&amp;para=2；<br>　　<br>　　我们的ajax：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">　var url = &apos;www.b.com/api/msg?method=1&amp;para=2&apos;；</div><div class="line">   &lt;br&gt;$.ajax(&#123;</div><div class="line">   type: &quot;GET&quot;,</div><div class="line">   url:url,</div><div class="line">   success: function(res)&#123;..&#125;,</div><div class="line">   ....</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>　　上面的请求必然会遇到跨域问题，这时我们需要修改一下我们的请求url，让请求发在nginx的一个url下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var url = &apos;www.b.com/api/msg?method=1&amp;para=2&apos;；</div><div class="line">	var proxyurl ＝ &apos;msg?method=1&amp;para=2&apos;；</div><div class="line">	//假如实际地址是 www.c.com/proxy/html/api/msg?method=1&amp;para=2; www.c.com是nginx主机地址</div><div class="line">	 $.ajax(&#123;</div><div class="line">	type: &quot;GET&quot;,</div><div class="line">	url:proxyurl,</div><div class="line">	success: function(res)&#123;..&#125;,</div><div class="line">	....</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 <p>　　再在刚才的路径中匹配到这个请求，我们在location下面再添加一个location。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">location ^~/proxy/html/&#123;</div><div class="line">	rewrite ^/proxy/html/(.*)$ /$1 break;</div><div class="line">	proxy_pass http://www.b.com/;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h4 id="以下做一个解释："><a href="#以下做一个解释：" class="headerlink" title="以下做一个解释："></a><span style="color:coral;">以下做一个解释：</span></h4><ol>
 <li><p>‘^~ /proxy/html/ ‘<br>　　就像上面说的一样是一个匹配规则，用于拦截请求，匹配任何以 <code>/proxy/html/</code>开头的地址，匹配符合以后，停止往下搜索正则。</p>
