@@ -3,41 +3,32 @@
 <head>
   <meta charset="utf-8">
   
-  <title>AbunuoのBlog</title>
+  <title>Nginx反向代理机制解决Ajax跨域问题 | AbunuoのBlog</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Nginx反向代理机制解决Ajax 跨域问题
-
-这篇文章主要介绍了Nginx服务器中处理AJAX跨域请求的配置方法讲解,需要的朋友可以参考下
+  <meta name="description" content="这篇文章主要介绍了Nginx服务器中处理AJAX跨域请求的配置方法讲解,需要的朋友可以参考下
 
 
-1. 什么是跨域以及产生原因　　跨域是指a页面想获取b页面资源，如果a、b页面的协议、域名、端口、子域名不同，或是a页面为ip地址，b页面为域名地址，所进行的访问行动都是跨域的，而浏览器为了安全问题一般都限制了跨域访问，也就是不允许跨域请求资源。
-跨域情">
+1. 什么是跨域以及产生原因　　跨域是指a页面想获取b页面资源，如果a、b页面的协议、域名、端口、子域名不同，或是a页面为ip地址，b页面为域名地址，所进行的访问行动都是跨域的，而浏览器为了安全问题一般都限制了跨域访问，也就是不允许跨域请求资源。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AbunuoのBlog">
-<meta property="og:url" content="http://liangmingqing.cn/2016/11/03/跨域问题分析/Nginx反向代理机制解决Ajax跨域问题/index.html">
+<meta property="og:title" content="Nginx反向代理机制解决Ajax跨域问题">
+<meta property="og:url" content="http://liangmingqing.cn/2016/01/18/跨域问题分析/Nginx反向代理机制解决Ajax跨域问题/index.html">
 <meta property="og:site_name" content="AbunuoのBlog">
-<meta property="og:description" content="Nginx反向代理机制解决Ajax 跨域问题
-
-这篇文章主要介绍了Nginx服务器中处理AJAX跨域请求的配置方法讲解,需要的朋友可以参考下
+<meta property="og:description" content="这篇文章主要介绍了Nginx服务器中处理AJAX跨域请求的配置方法讲解,需要的朋友可以参考下
 
 
-1. 什么是跨域以及产生原因　　跨域是指a页面想获取b页面资源，如果a、b页面的协议、域名、端口、子域名不同，或是a页面为ip地址，b页面为域名地址，所进行的访问行动都是跨域的，而浏览器为了安全问题一般都限制了跨域访问，也就是不允许跨域请求资源。
-跨域情">
+1. 什么是跨域以及产生原因　　跨域是指a页面想获取b页面资源，如果a、b页面的协议、域名、端口、子域名不同，或是a页面为ip地址，b页面为域名地址，所进行的访问行动都是跨域的，而浏览器为了安全问题一般都限制了跨域访问，也就是不允许跨域请求资源。">
 <meta property="og:image" content="http://liangmingqing.cn/img/1478182149955.png">
-<meta property="og:updated_time" content="2016-11-04T13:44:13.812Z">
+<meta property="og:updated_time" content="2016-11-05T05:48:21.183Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AbunuoのBlog">
-<meta name="twitter:description" content="Nginx反向代理机制解决Ajax 跨域问题
-
-这篇文章主要介绍了Nginx服务器中处理AJAX跨域请求的配置方法讲解,需要的朋友可以参考下
+<meta name="twitter:title" content="Nginx反向代理机制解决Ajax跨域问题">
+<meta name="twitter:description" content="这篇文章主要介绍了Nginx服务器中处理AJAX跨域请求的配置方法讲解,需要的朋友可以参考下
 
 
-1. 什么是跨域以及产生原因　　跨域是指a页面想获取b页面资源，如果a、b页面的协议、域名、端口、子域名不同，或是a页面为ip地址，b页面为域名地址，所进行的访问行动都是跨域的，而浏览器为了安全问题一般都限制了跨域访问，也就是不允许跨域请求资源。
-跨域情">
+1. 什么是跨域以及产生原因　　跨域是指a页面想获取b页面资源，如果a、b页面的协议、域名、端口、子域名不同，或是a页面为ip地址，b页面为域名地址，所进行的访问行动都是跨域的，而浏览器为了安全问题一般都限制了跨域访问，也就是不允许跨域请求资源。">
 <meta name="twitter:image" content="http://liangmingqing.cn/img/1478182149955.png">
   
     <link rel="alternative" href="/atom.xml" title="AbunuoのBlog" type="application/atom+xml">
@@ -87,6 +78,11 @@
 						</div>
 						
 						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
 					</div>
 					
 				</div>
@@ -98,6 +94,8 @@
 						
 						<li>友情链接</li>
 						
+						
+						<li>关于我</li>
 						
 					</ul>
 				</div>
@@ -128,7 +126,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						
+						<a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/前端/" style="font-size: 20px;">前端</a> <a href="/tags/跨域/" style="font-size: 10px;">跨域</a>
 					</div>
 				</section>
 				
@@ -143,6 +141,12 @@
 				</section>
 				
 
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">撸码的乐趣：人不在，代码还在。。o(╯□╰)o</div>
+				</section>
 				
 			</div>
 		</div>
@@ -184,11 +188,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-跨域问题分析/Nginx反向代理机制解决Ajax跨域问题" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="photo-跨域问题分析/Nginx反向代理机制解决Ajax跨域问题" class="article article-type-photo" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/11/03/跨域问题分析/Nginx反向代理机制解决Ajax跨域问题/" class="article-date">
-  	<time datetime="2016-11-03T14:13:12.537Z" itemprop="datePublished">2016-11-03</time>
+      <a href="/2016/01/18/跨域问题分析/Nginx反向代理机制解决Ajax跨域问题/" class="article-date">
+  	<time datetime="2016-01-17T16:00:00.000Z" itemprop="datePublished">2016-01-18</time>
 </a>
     </div>
   
@@ -197,14 +201,41 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Nginx反向代理机制解决Ajax跨域问题
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跨域/">跨域</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/跨域/">跨域</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Nginx反向代理机制解决Ajax-跨域问题"><a href="#Nginx反向代理机制解决Ajax-跨域问题" class="headerlink" title="Nginx反向代理机制解决Ajax 跨域问题"></a><p style="text-align:center">Nginx反向代理机制解决Ajax 跨域问题</p></h3><blockquote>
+        <blockquote>
 <ul>
 <li>这篇文章主要介绍了Nginx服务器中处理AJAX跨域请求的配置方法讲解,需要的朋友可以参考下</li>
 </ul>
 </blockquote>
 <h4 id="1-什么是跨域以及产生原因"><a href="#1-什么是跨域以及产生原因" class="headerlink" title="1. 什么是跨域以及产生原因"></a>1. 什么是跨域以及产生原因</h4><p>　　跨域是指a页面想获取b页面资源，如果a、b页面的协议、域名、端口、子域名不同，或是a页面为ip地址，b页面为域名地址，所进行的访问行动都是跨域的，而浏览器为了安全问题一般都限制了跨域访问，也就是不允许跨域请求资源。</p>
+<a id="more"></a>
 <p>跨域情况如下：<br><img src="/img/1478182149955.png" alt="跨域情况解析" style="margin:0 auto;display:block;"></p>
 <h4 id="2-跨域的常见解决方法"><a href="#2-跨域的常见解决方法" class="headerlink" title="2. 跨域的常见解决方法"></a>2. 跨域的常见解决方法</h4><p>目前来讲没有不依靠服务器端来跨域请求资源的技术</p>
 <p>　　1. jsonp 需要目标服务器配合一个<code>callback</code>函数。</p>
@@ -247,15 +278,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/11/05/call和apply/call()和apply()区别/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">&lt;</strong>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
+    <a href="/2015/11/11/call和apply/call()和apply()区别/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">call()和apply()区别</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
   
 </nav>
 
@@ -287,7 +314,7 @@
   <div class="outer">
     <div id="footer-info">
       <div class="footer-left">
-        &copy; 2016 Abunuo
+        &copy; 2016 AbunuoのBlog
       </div>
         <div class="footer-right">
           <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/winnerweb/hexo-Yilia-Smackdown" target="_blank">Yilia(Smackdown)</a>
@@ -295,6 +322,7 @@
     </div>
   </div>
 </footer>
+
     </div>
     
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
