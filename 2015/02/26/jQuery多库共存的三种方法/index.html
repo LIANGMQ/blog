@@ -3,18 +3,25 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: javascript | AbunuoのBlog</title>
+  <title>jQuery多库共存的三种方法 | AbunuoのBlog</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="AbunuoのBlog">
-<meta property="og:url" content="http://liangmingqing.cn/tags/javascript/index.html">
+  <meta name="description" content="jQuery团队为用户提供了贴心的方法让jQuery能与其他js库(如Prototype)，实现起来很简单。
+其实，多库共存就是为了解决“$ ”符号的冲突。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery多库共存的三种方法">
+<meta property="og:url" content="http://liangmingqing.cn/2015/02/26/jQuery多库共存的三种方法/index.html">
 <meta property="og:site_name" content="AbunuoのBlog">
+<meta property="og:description" content="jQuery团队为用户提供了贴心的方法让jQuery能与其他js库(如Prototype)，实现起来很简单。
+其实，多库共存就是为了解决“$ ”符号的冲突。">
+<meta property="og:updated_time" content="2016-11-26T03:52:37.839Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AbunuoのBlog">
+<meta name="twitter:title" content="jQuery多库共存的三种方法">
+<meta name="twitter:description" content="jQuery团队为用户提供了贴心的方法让jQuery能与其他js库(如Prototype)，实现起来很简单。
+其实，多库共存就是为了解决“$ ”符号的冲突。">
   
     <link rel="alternative" href="/atom.xml" title="AbunuoのBlog" type="application/atom+xml">
   
@@ -177,110 +184,104 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-jQuery多库共存的三种方法" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/02/26/jQuery多库共存的三种方法/" class="archive-article-date">
-  	<time datetime="2015-02-25T16:00:00.000Z" itemprop="datePublished">Feb 26</time>
+    <div class="article-meta">
+      <a href="/2015/02/26/jQuery多库共存的三种方法/" class="article-date">
+  	<time datetime="2015-02-25T16:00:00.000Z" itemprop="datePublished">2015-02-26</time>
 </a>
-        </div>
-        <h1 itemprop="name">
-            
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/02/26/jQuery多库共存的三种方法/">jQuery多库共存的三种方法</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      jQuery多库共存的三种方法
     </h1>
   
 
-        </h1>
-        <div class="article-info info-on-left">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
 	</div>
 
-          
+        
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/javascript/">javascript</a>
 	</div>
 
 
-          
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>jQuery团队为用户提供了贴心的方法让jQuery能与其他js库(如Prototype)，实现起来很简单。</p>
+<p>其实，多库共存就是为了解决“$ ”符号的冲突。</p>
+<a id="more"></a>
+<h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>利用jQuery的实用函数$.noConflict();这个函数归还$的名称控制权给另一个库，因此可以在页面上使用其他库。</p>
+<p>这时，我们可以用”jQuery “这个名称调用jQuery的功能。<br>举个栗子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$.noConflict();   </div><div class="line">jQuery(&apos;#id&apos;).hide(); </div><div class="line">或者给jQuery一个别名</div><div class="line">var $j=jQuery; </div><div class="line">$j(&apos;#id&apos;).hide();</div></pre></td></tr></table></figure></p>
+<h4 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h4><p>利用自执行函数<code>(function($){/*代码块*/})(jQuery)</code><br>其实就是函数自执行改变改变<code>$</code>作用域的技巧<br>再举个栗子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//声明函数  </div><div class="line">var fun=function($)&#123;/*代码块*/&#125;;  </div><div class="line">//调用函数  </div><div class="line">fun(jQuery);</div></pre></td></tr></table></figure></p>
+<h4 id="方法三："><a href="#方法三：" class="headerlink" title="方法三："></a>方法三：</h4><p><code>jQuery(function($){/*代码块*/})</code><br>通过传递一个函数作为jQuery的参数，因此把这个函数声明为就绪函数。</p>
+<p>那它究竟是怎么工作的呢？</p>
+<p>我们声明$为就绪函数的参数，因为jQuery总是吧jQuery对象的引用作为第一个参数传递，所以就保证了函数的执行。</p>
+
+      
+    </div>
+    
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/07/04/原型链/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          内部原型（`_proto_`） or  构造器的原型（`prototype`）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/07/26/Link与import区别/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">link和@import的区别</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
 </article>
 
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2014" class="archive-year">2014</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2014/07/26/Link与import区别/" class="archive-article-date">
-  	<time datetime="2014-07-25T16:00:00.000Z" itemprop="datePublished">Jul 26</time>
-</a>
-        </div>
-        <h1 itemprop="name">
-            
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/07/26/Link与import区别/">link和@import的区别</a>
-    </h1>
-  
 
-        </h1>
-        <div class="article-info info-on-left">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
-
-          
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a>
-	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
 
-  
-  
-    </div></section>
-  
 
-    
 
 </div>
       <footer id="footer">
@@ -307,9 +308,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false
 	}
