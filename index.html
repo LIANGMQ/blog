@@ -343,10 +343,6 @@
         <blockquote>
 <p>对于大型应用来说，一个首当其冲的问题就是所需加载的 JavaScript 的大小。程序应当只加载当前渲染页所需的 JavaScript。有些开发者将这种方式称之为“代码分拆” —— 将所有的代码分拆成多个小包，在用户浏览过程中按需加载。<br>对于底层细节的修改不应该需要它上面每一层级都进行修改。举个例子，为一个照片浏览页添加一个路径不应该影响到首页加载的 JavaScript 的大小。也不能因为多个团队共用一个大型的路由配置文件而造成合并时的冲突。</p>
 </blockquote>
-<p>React Router 里的<code>路径匹配</code>以及<code>组件加载</code>都是异步完成的，不仅允许你延迟加载组件，并且可以延迟加载路由配置。在首次加载包中你只需要有一个路径定义，路由会自动解析剩下的路径。</p>
-<p>Route 可以定义 <code>getChildRoutes</code>，<code>getIndexRoute</code> 和 <code>getComponents</code>这几个函数。它们都是异步执行，并且只有在需要时才被调用。我们将这种方式称之为 “逐渐匹配”。 React Router 会逐渐的匹配 URL 并只加载该 URL 对应页面所需的路径配置和组件。</p>
-<p>webpack中配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">const CourseRoute = &#123;</div><div class="line">  path: &apos;course/:courseId&apos;,</div><div class="line"></div><div class="line">  getChildRoutes(location, callback) &#123;</div><div class="line">    require.ensure([], function (require) &#123;</div><div class="line">      callback(null, [</div><div class="line">        require(&apos;./routes/Announcements&apos;),</div><div class="line">        require(&apos;./routes/Assignments&apos;),</div><div class="line">        require(&apos;./routes/Grades&apos;),</div><div class="line">      ])</div><div class="line">    &#125;)</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  getIndexRoute(location, callback) &#123;</div><div class="line">    require.ensure([], function (require) &#123;</div><div class="line">      callback(null, require(&apos;./components/Index&apos;))</div><div class="line">    &#125;)</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  getComponents(location, callback) &#123;</div><div class="line">    require.ensure([], function (require) &#123;</div><div class="line">      callback(null, require(&apos;./components/Course&apos;))</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
       
     </div>
     
@@ -365,6 +361,10 @@
 
       <div class="clearfix"></div>
     </div>
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/18/React之动态路由/#more">阅读全文 >></a>
+        </p>
       
     
   </div>
@@ -405,30 +405,6 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>在组建中添加路由的history对象<br><strong>注意：你的Router components不需要这个minxin，他在this.props.history中已经可用。这是为了组件更深次的渲染树中需要访问路由的hiatory对象。</strong></p>
-<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><ol>
-<li><code>pushState(state, pathName, query)</code><br>跳转到另一个新的URL。<br>arguments</li>
-</ol>
-<ul>
-<li><code>state</code> - location 的 state。</li>
-<li><code>pathname</code> - 没有 query 完整的 URL。</li>
-<li><code>query</code> - 通过路由字符串化的一个对象。</li>
-</ul>
-<ol>
-<li><code>reqlaceState(state, pathName, query)</code><br>在不影响history的长度的情况下（一个重定向），用新的URL替换当前这个。</li>
-<li><code>go(n)</code><br>在history中使用<code>n</code>或<code>-n</code>进行前进或后退。</li>
-<li><code>goBack()</code><br>在 history 中后退。</li>
-<li><code>goForward()</code><br>在 history 中前进。</li>
-<li><code>createPath(pathname, query)</code><br>使用路由配置，将 query 字符串化加到路径名中。</li>
-<li><code>createHref(pathname, query)</code><br>使用路由配置，创建一个 URL。例如，它会在 pathname 的前面加上 #/ 给 hash history。</li>
-<li><code>isActive(pathname, query, indexOnly)</code><br>根据当前路径是否激活返回 true 或 false。通过 pathname 匹配到 route 分支下的每个 route 将会是 true（子 route 是激活的情况下，父 route 也是激活的），除非 indexOnly 已经指定了，在这种情况下，它只会匹配到具体的路径。<br>arguments</li>
-</ol>
-<ul>
-<li><code>pathname</code> - 没有 query 完整的 URL。</li>
-<li><code>query</code> - 如果没有指定，那会是一个包含键值对的对象，并且在当前的 query 中是激活状态的 - 在当前的 query 中明确是 undefined 的值会丢失相应的键或 undefined</li>
-<li><code>indexOnly</code> - 一个 boolean（默认：false）。</li>
-</ul>
-<p>Example：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">import &#123; History &#125; from &apos;react-router&apos;</div><div class="line"></div><div class="line">React.createClass(&#123;</div><div class="line">  mixins: [ History ],</div><div class="line">  render() &#123;</div><div class="line">    return (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;div onClick=&#123;() =&gt; this.history.pushState(null, &apos;/foo&apos;)&#125;&gt;Go to foo&lt;/div&gt;</div><div class="line">        &lt;div onClick=&#123;() =&gt; this.history.replaceState(null, &apos;bar&apos;)&#125;&gt;Go to bar without creating a new history entry&lt;/div&gt;</div><div class="line">        &lt;div onClick=&#123;() =&gt; this.history.goBack()&#125;&gt;Go back&lt;/div&gt;</div><div class="line">     &lt;/div&gt;</div><div class="line">   )</div><div class="line"> &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-
       
     </div>
     
@@ -447,6 +423,10 @@
 
       <div class="clearfix"></div>
     </div>
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/18/History Minxin  –路由跳转/#more">阅读全文 >></a>
+        </p>
       
     
   </div>
