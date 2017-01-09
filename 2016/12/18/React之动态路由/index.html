@@ -3,25 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>jQuery多库共存的三种方法 | AbunuoのBlog</title>
+  <title>React之动态路由 | AbunuoのBlog</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="jQuery团队为用户提供了贴心的方法让jQuery能与其他js库(如Prototype)，实现起来很简单。
-其实，多库共存就是为了解决“$ ”符号的冲突。">
+  <meta name="description" content="对于大型应用来说，一个首当其冲的问题就是所需加载的 JavaScript 的大小。程序应当只加载当前渲染页所需的 JavaScript。有些开发者将这种方式称之为“代码分拆” —— 将所有的代码分拆成多个小包，在用户浏览过程中按需加载。对于底层细节的修改不应该需要它上面每一层级都进行修改。举个例子，为一个照片浏览页添加一个路径不应该影响到首页加载的 JavaScript 的大小。也不能因为多个团">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jQuery多库共存的三种方法">
-<meta property="og:url" content="http://liangmingqing.cn/2015/02/26/jQuery多库共存的三种方法/index.html">
+<meta property="og:title" content="React之动态路由">
+<meta property="og:url" content="http://liangmingqing.cn/2016/12/18/React之动态路由/index.html">
 <meta property="og:site_name" content="AbunuoのBlog">
-<meta property="og:description" content="jQuery团队为用户提供了贴心的方法让jQuery能与其他js库(如Prototype)，实现起来很简单。
-其实，多库共存就是为了解决“$ ”符号的冲突。">
-<meta property="og:updated_time" content="2016-11-26T03:52:38.000Z">
+<meta property="og:description" content="对于大型应用来说，一个首当其冲的问题就是所需加载的 JavaScript 的大小。程序应当只加载当前渲染页所需的 JavaScript。有些开发者将这种方式称之为“代码分拆” —— 将所有的代码分拆成多个小包，在用户浏览过程中按需加载。对于底层细节的修改不应该需要它上面每一层级都进行修改。举个例子，为一个照片浏览页添加一个路径不应该影响到首页加载的 JavaScript 的大小。也不能因为多个团">
+<meta property="og:updated_time" content="2017-01-09T04:00:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jQuery多库共存的三种方法">
-<meta name="twitter:description" content="jQuery团队为用户提供了贴心的方法让jQuery能与其他js库(如Prototype)，实现起来很简单。
-其实，多库共存就是为了解决“$ ”符号的冲突。">
+<meta name="twitter:title" content="React之动态路由">
+<meta name="twitter:description" content="对于大型应用来说，一个首当其冲的问题就是所需加载的 JavaScript 的大小。程序应当只加载当前渲染页所需的 JavaScript。有些开发者将这种方式称之为“代码分拆” —— 将所有的代码分拆成多个小包，在用户浏览过程中按需加载。对于底层细节的修改不应该需要它上面每一层级都进行修改。举个例子，为一个照片浏览页添加一个路径不应该影响到首页加载的 JavaScript 的大小。也不能因为多个团">
   
     <link rel="alternative" href="/atom.xml" title="AbunuoのBlog" type="application/atom+xml">
   
@@ -184,11 +181,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-jQuery多库共存的三种方法" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-React之动态路由" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/02/26/jQuery多库共存的三种方法/" class="article-date">
-  	<time datetime="2015-02-25T16:00:00.000Z" itemprop="datePublished">2015-02-26</time>
+      <a href="/2016/12/18/React之动态路由/" class="article-date">
+  	<time datetime="2016-12-17T16:00:00.000Z" itemprop="datePublished">2016-12-18</time>
 </a>
     </div>
   
@@ -201,7 +198,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      jQuery多库共存的三种方法
+      React之动态路由
     </h1>
   
 
@@ -210,12 +207,12 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
 	</div>
 
         
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a>
+	<a class="article-category-link" href="/categories/react/">react</a>
 	</div>
 
 
@@ -225,15 +222,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>jQuery团队为用户提供了贴心的方法让jQuery能与其他js库(如Prototype)，实现起来很简单。</p>
-<p>其实，多库共存就是为了解决“$ ”符号的冲突。</p>
-<a id="more"></a>
-<h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>利用jQuery的实用函数$.noConflict();这个函数归还$的名称控制权给另一个库，因此可以在页面上使用其他库。</p>
-<p>这时，我们可以用”jQuery “这个名称调用jQuery的功能。<br>举个栗子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$.noConflict();   </div><div class="line">jQuery(&apos;#id&apos;).hide(); </div><div class="line">或者给jQuery一个别名</div><div class="line">var $j=jQuery; </div><div class="line">$j(&apos;#id&apos;).hide();</div></pre></td></tr></table></figure></p>
-<h4 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h4><p>利用自执行函数<code>(function($){/*代码块*/})(jQuery)</code><br>其实就是函数自执行改变改变<code>$</code>作用域的技巧<br>再举个栗子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//声明函数  </div><div class="line">var fun=function($)&#123;/*代码块*/&#125;;  </div><div class="line">//调用函数  </div><div class="line">fun(jQuery);</div></pre></td></tr></table></figure></p>
-<h4 id="方法三："><a href="#方法三：" class="headerlink" title="方法三："></a>方法三：</h4><p><code>jQuery(function($){/*代码块*/})</code><br>通过传递一个函数作为jQuery的参数，因此把这个函数声明为就绪函数。</p>
-<p>那它究竟是怎么工作的呢？</p>
-<p>我们声明$为就绪函数的参数，因为jQuery总是吧jQuery对象的引用作为第一个参数传递，所以就保证了函数的执行。</p>
+        <blockquote>
+<p>对于大型应用来说，一个首当其冲的问题就是所需加载的 JavaScript 的大小。程序应当只加载当前渲染页所需的 JavaScript。有些开发者将这种方式称之为“代码分拆” —— 将所有的代码分拆成多个小包，在用户浏览过程中按需加载。<br>对于底层细节的修改不应该需要它上面每一层级都进行修改。举个例子，为一个照片浏览页添加一个路径不应该影响到首页加载的 JavaScript 的大小。也不能因为多个团队共用一个大型的路由配置文件而造成合并时的冲突。</p>
+</blockquote>
+<p>React Router 里的<code>路径匹配</code>以及<code>组件加载</code>都是异步完成的，不仅允许你延迟加载组件，并且可以延迟加载路由配置。在首次加载包中你只需要有一个路径定义，路由会自动解析剩下的路径。</p>
+<p>Route 可以定义 <code>getChildRoutes</code>，<code>getIndexRoute</code> 和 <code>getComponents</code>这几个函数。它们都是异步执行，并且只有在需要时才被调用。我们将这种方式称之为 “逐渐匹配”。 React Router 会逐渐的匹配 URL 并只加载该 URL 对应页面所需的路径配置和组件。</p>
+<p>webpack中配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">const CourseRoute = &#123;</div><div class="line">  path: &apos;course/:courseId&apos;,</div><div class="line"></div><div class="line">  getChildRoutes(location, callback) &#123;</div><div class="line">    require.ensure([], function (require) &#123;</div><div class="line">      callback(null, [</div><div class="line">        require(&apos;./routes/Announcements&apos;),</div><div class="line">        require(&apos;./routes/Assignments&apos;),</div><div class="line">        require(&apos;./routes/Grades&apos;),</div><div class="line">      ])</div><div class="line">    &#125;)</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  getIndexRoute(location, callback) &#123;</div><div class="line">    require.ensure([], function (require) &#123;</div><div class="line">      callback(null, require(&apos;./components/Index&apos;))</div><div class="line">    &#125;)</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  getComponents(location, callback) &#123;</div><div class="line">    require.ensure([], function (require) &#123;</div><div class="line">      callback(null, require(&apos;./components/Course&apos;))</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -243,18 +237,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/07/04/原型链/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/12/19/Flux架构入门/Flux架构入门/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">&lt;</strong>
       <div class="article-nav-title">
         
-          内部原型（`_proto_`） or  构造器的原型（`prototype`）
+          Flux架构入门
         
       </div>
     </a>
   
   
-    <a href="/2014/07/26/Link与import区别/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">link和@import的区别</div>
+    <a href="/2016/12/18/History Minxin  –路由跳转/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">History Minxin  --路由跳转</div>
       <strong class="article-nav-caption">&gt;</strong>
     </a>
   

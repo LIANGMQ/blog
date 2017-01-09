@@ -3,25 +3,37 @@
 <head>
   <meta charset="utf-8">
   
-  <title>jQuery多库共存的三种方法 | AbunuoのBlog</title>
+  <title>History Minxin  --路由跳转 | AbunuoのBlog</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="jQuery团队为用户提供了贴心的方法让jQuery能与其他js库(如Prototype)，实现起来很简单。
-其实，多库共存就是为了解决“$ ”符号的冲突。">
+  <meta name="description" content="在组建中添加路由的history对象注意：你的Router components不需要这个minxin，他在this.props.history中已经可用。这是为了组件更深次的渲染树中需要访问路由的hiatory对象。
+Method
+pushState(state, pathName, query)跳转到另一个新的URL。arguments
+
+
+state - location 的 state。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jQuery多库共存的三种方法">
-<meta property="og:url" content="http://liangmingqing.cn/2015/02/26/jQuery多库共存的三种方法/index.html">
+<meta property="og:title" content="History Minxin  --路由跳转">
+<meta property="og:url" content="http://liangmingqing.cn/2016/12/18/History Minxin  –路由跳转/index.html">
 <meta property="og:site_name" content="AbunuoのBlog">
-<meta property="og:description" content="jQuery团队为用户提供了贴心的方法让jQuery能与其他js库(如Prototype)，实现起来很简单。
-其实，多库共存就是为了解决“$ ”符号的冲突。">
-<meta property="og:updated_time" content="2016-11-26T03:52:38.000Z">
+<meta property="og:description" content="在组建中添加路由的history对象注意：你的Router components不需要这个minxin，他在this.props.history中已经可用。这是为了组件更深次的渲染树中需要访问路由的hiatory对象。
+Method
+pushState(state, pathName, query)跳转到另一个新的URL。arguments
+
+
+state - location 的 state。">
+<meta property="og:updated_time" content="2017-01-09T03:59:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jQuery多库共存的三种方法">
-<meta name="twitter:description" content="jQuery团队为用户提供了贴心的方法让jQuery能与其他js库(如Prototype)，实现起来很简单。
-其实，多库共存就是为了解决“$ ”符号的冲突。">
+<meta name="twitter:title" content="History Minxin  --路由跳转">
+<meta name="twitter:description" content="在组建中添加路由的history对象注意：你的Router components不需要这个minxin，他在this.props.history中已经可用。这是为了组件更深次的渲染树中需要访问路由的hiatory对象。
+Method
+pushState(state, pathName, query)跳转到另一个新的URL。arguments
+
+
+state - location 的 state。">
   
     <link rel="alternative" href="/atom.xml" title="AbunuoのBlog" type="application/atom+xml">
   
@@ -184,11 +196,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-jQuery多库共存的三种方法" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-History Minxin  –路由跳转" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/02/26/jQuery多库共存的三种方法/" class="article-date">
-  	<time datetime="2015-02-25T16:00:00.000Z" itemprop="datePublished">2015-02-26</time>
+      <a href="/2016/12/18/History Minxin  –路由跳转/" class="article-date">
+  	<time datetime="2016-12-17T16:00:00.000Z" itemprop="datePublished">2016-12-18</time>
 </a>
     </div>
   
@@ -201,7 +213,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      jQuery多库共存的三种方法
+      History Minxin  --路由跳转
     </h1>
   
 
@@ -210,12 +222,12 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
 	</div>
 
         
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a>
+	<a class="article-category-link" href="/categories/react/">react</a>
 	</div>
 
 
@@ -225,15 +237,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>jQuery团队为用户提供了贴心的方法让jQuery能与其他js库(如Prototype)，实现起来很简单。</p>
-<p>其实，多库共存就是为了解决“$ ”符号的冲突。</p>
-<a id="more"></a>
-<h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>利用jQuery的实用函数$.noConflict();这个函数归还$的名称控制权给另一个库，因此可以在页面上使用其他库。</p>
-<p>这时，我们可以用”jQuery “这个名称调用jQuery的功能。<br>举个栗子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$.noConflict();   </div><div class="line">jQuery(&apos;#id&apos;).hide(); </div><div class="line">或者给jQuery一个别名</div><div class="line">var $j=jQuery; </div><div class="line">$j(&apos;#id&apos;).hide();</div></pre></td></tr></table></figure></p>
-<h4 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h4><p>利用自执行函数<code>(function($){/*代码块*/})(jQuery)</code><br>其实就是函数自执行改变改变<code>$</code>作用域的技巧<br>再举个栗子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//声明函数  </div><div class="line">var fun=function($)&#123;/*代码块*/&#125;;  </div><div class="line">//调用函数  </div><div class="line">fun(jQuery);</div></pre></td></tr></table></figure></p>
-<h4 id="方法三："><a href="#方法三：" class="headerlink" title="方法三："></a>方法三：</h4><p><code>jQuery(function($){/*代码块*/})</code><br>通过传递一个函数作为jQuery的参数，因此把这个函数声明为就绪函数。</p>
-<p>那它究竟是怎么工作的呢？</p>
-<p>我们声明$为就绪函数的参数，因为jQuery总是吧jQuery对象的引用作为第一个参数传递，所以就保证了函数的执行。</p>
+        <p>在组建中添加路由的history对象<br><strong>注意：你的Router components不需要这个minxin，他在this.props.history中已经可用。这是为了组件更深次的渲染树中需要访问路由的hiatory对象。</strong></p>
+<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><ol>
+<li><code>pushState(state, pathName, query)</code><br>跳转到另一个新的URL。<br>arguments</li>
+</ol>
+<ul>
+<li><code>state</code> - location 的 state。</li>
+<li><code>pathname</code> - 没有 query 完整的 URL。</li>
+<li><code>query</code> - 通过路由字符串化的一个对象。</li>
+</ul>
+<ol>
+<li><code>reqlaceState(state, pathName, query)</code><br>在不影响history的长度的情况下（一个重定向），用新的URL替换当前这个。</li>
+<li><code>go(n)</code><br>在history中使用<code>n</code>或<code>-n</code>进行前进或后退。</li>
+<li><code>goBack()</code><br>在 history 中后退。</li>
+<li><code>goForward()</code><br>在 history 中前进。</li>
+<li><code>createPath(pathname, query)</code><br>使用路由配置，将 query 字符串化加到路径名中。</li>
+<li><code>createHref(pathname, query)</code><br>使用路由配置，创建一个 URL。例如，它会在 pathname 的前面加上 #/ 给 hash history。</li>
+<li><code>isActive(pathname, query, indexOnly)</code><br>根据当前路径是否激活返回 true 或 false。通过 pathname 匹配到 route 分支下的每个 route 将会是 true（子 route 是激活的情况下，父 route 也是激活的），除非 indexOnly 已经指定了，在这种情况下，它只会匹配到具体的路径。<br>arguments</li>
+</ol>
+<ul>
+<li><code>pathname</code> - 没有 query 完整的 URL。</li>
+<li><code>query</code> - 如果没有指定，那会是一个包含键值对的对象，并且在当前的 query 中是激活状态的 - 在当前的 query 中明确是 undefined 的值会丢失相应的键或 undefined</li>
+<li><code>indexOnly</code> - 一个 boolean（默认：false）。</li>
+</ul>
+<p>Example：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">import &#123; History &#125; from &apos;react-router&apos;</div><div class="line"></div><div class="line">React.createClass(&#123;</div><div class="line">  mixins: [ History ],</div><div class="line">  render() &#123;</div><div class="line">    return (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;div onClick=&#123;() =&gt; this.history.pushState(null, &apos;/foo&apos;)&#125;&gt;Go to foo&lt;/div&gt;</div><div class="line">        &lt;div onClick=&#123;() =&gt; this.history.replaceState(null, &apos;bar&apos;)&#125;&gt;Go to bar without creating a new history entry&lt;/div&gt;</div><div class="line">        &lt;div onClick=&#123;() =&gt; this.history.goBack()&#125;&gt;Go back&lt;/div&gt;</div><div class="line">     &lt;/div&gt;</div><div class="line">   )</div><div class="line"> &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -243,18 +270,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/07/04/原型链/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/12/18/React之动态路由/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">&lt;</strong>
       <div class="article-nav-title">
         
-          内部原型（`_proto_`） or  构造器的原型（`prototype`）
+          React之动态路由
         
       </div>
     </a>
   
   
-    <a href="/2014/07/26/Link与import区别/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">link和@import的区别</div>
+    <a href="/2016/12/17/初试React Router/初试React Router/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">初试React Router</div>
       <strong class="article-nav-caption">&gt;</strong>
     </a>
   

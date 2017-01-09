@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>初试React Router | AbunuoのBlog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="React Router(路由库)——它是官方维护的，事实上也是唯一可选的路由库。它通过管理 URL，实现组件的切换和状态的变化，开发复杂的应用几乎肯定会用到。React Router 保持 UI 与 URL 同步。它拥有简单的 API 与强大的功能例如代码缓冲加载、动态路由匹配、以及建立正确的位置过渡处理
+
+实例库可以参见官方的示例库，共分为14部分，由浅到深；React Router中文AP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初试React Router">
+<meta property="og:url" content="http://liangmingqing.cn/2016/12/17/初试React Router/初试React Router/index.html">
+<meta property="og:site_name" content="AbunuoのBlog">
+<meta property="og:description" content="React Router(路由库)——它是官方维护的，事实上也是唯一可选的路由库。它通过管理 URL，实现组件的切换和状态的变化，开发复杂的应用几乎肯定会用到。React Router 保持 UI 与 URL 同步。它拥有简单的 API 与强大的功能例如代码缓冲加载、动态路由匹配、以及建立正确的位置过渡处理
+
+实例库可以参见官方的示例库，共分为14部分，由浅到深；React Router中文AP">
+<meta property="og:image" content="http://liangmingqing.cn/img/1482214350484.png">
+<meta property="og:updated_time" content="2017-01-09T03:59:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初试React Router">
+<meta name="twitter:description" content="React Router(路由库)——它是官方维护的，事实上也是唯一可选的路由库。它通过管理 URL，实现组件的切换和状态的变化，开发复杂的应用几乎肯定会用到。React Router 保持 UI 与 URL 同步。它拥有简单的 API 与强大的功能例如代码缓冲加载、动态路由匹配、以及建立正确的位置过渡处理
+
+实例库可以参见官方的示例库，共分为14部分，由浅到深；React Router中文AP">
+<meta name="twitter:image" content="http://liangmingqing.cn/img/1482214350484.png">
+  
+    <link rel="alternative" href="/atom.xml" title="AbunuoのBlog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/1030.gif">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/head.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Abunuo</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">(͡·̮̃·̃) 撸码的乐趣，“人都没了，™代码还在”</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Abunuo" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="/tags/react/" style="font-size: 16.67px;">react</a> <a href="/tags/优化/" style="font-size: 13.33px;">优化</a> <a href="/tags/前端/" style="font-size: 20px;">前端</a> <a href="/tags/跨域/" style="font-size: 10px;">跨域</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/winnerweb/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">Line code fun: people did not, the code is still..</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Abunuo</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/head.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Abunuo</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">(͡·̮̃·̃) 撸码的乐趣，“人都没了，™代码还在”</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Abunuo" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-初试React Router/初试React Router" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/17/初试React Router/初试React Router/" class="article-date">
+  	<time datetime="2016-12-16T16:00:00.000Z" itemprop="datePublished">2016-12-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      初试React Router
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/react/">react</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>React Router(路由库)——它是官方维护的，事实上也是唯一可选的路由库。它通过管理 URL，实现组件的切换和状态的变化，开发复杂的应用几乎肯定会用到。React Router 保持 UI 与 URL 同步。它拥有简单的 API 与强大的功能例如代码缓冲加载、动态路由匹配、以及建立正确的位置过渡处理</p>
+</blockquote>
+<p>实例库可以参见官方的<a href="https://github.com/reactjs/react-router-tutorial/tree/master/lessons" target="_blank" rel="external">示例库</a>，共分为14部分，由浅到深；<br><a href="https://react-guide.github.io/react-router-cn/docs/API.html#named-components" target="_blank" rel="external">React Router中文API</a></p>
+<a id="more"></a>
+<h5 id="1-React技术栈"><a href="#1-React技术栈" class="headerlink" title="1. React技术栈"></a>1. React技术栈</h5><p><img src="/img/1482214350484.png"><br><code>React技术栈</code>主要包括：ES6、Babel（解析jsx，react，es6等）、React、Webpack、Flex（布局）、SCSS（Less）、React-Router、Flux（Redux实现）、测试等</p>
+<h4 id="React-Router"><a href="#React-Router" class="headerlink" title="React Router"></a>React Router</h4><hr>
+<h5 id="2-基本用法"><a href="#2-基本用法" class="headerlink" title="2. 基本用法"></a>2. 基本用法</h5><p>React Router 安装命令：<br><code>npm install --save react-router</code><br>使用时，路由器Router就是React的一个组件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import &#123; Router &#125; from &apos;react-router&apos;;</div><div class="line">render (&lt;Router /&gt;,document.getElementById(&quot;app&quot;));</div></pre></td></tr></table></figure></p>
+<p>Router本身只是一个容器，真正的路由要通过Route组件定义。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import &#123; Router, Route, hashHistory &#125; from &apos;react-router&apos;;</div><div class="line">render((</div><div class="line">  &lt;Router history=&#123;hashHistory&#125;&gt;</div><div class="line">    &lt;Route path=&quot;/&quot; component=&#123;App&#125;/&gt;</div><div class="line">  &lt;/Router&gt;</div><div class="line">), document.getElementById(&apos;app&apos;));</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>其中Router有一个参数history，它的值hashHistory表示，路由的切换有URL的hash变化决定，即URl的#部分发生变化。<br>例如：用户访问<code>http://www.hao123.com/</code>,实际看到的是<code>http://www.hao123.com/#/</code></p>
+<h5 id="3-嵌套路由"><a href="#3-嵌套路由" class="headerlink" title="3. 嵌套路由"></a>3. 嵌套路由</h5><p>Router组件还可以嵌套。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;Router history=&#123;hashHistory&#125;&gt;</div><div class="line">  &lt;Route path=&quot;/&quot; component=&#123;App&#125;&gt;</div><div class="line">    &lt;Route path=&quot;/repos&quot; component=&#123;Repos&#125;/&gt;</div><div class="line">    &lt;Route path=&quot;/about&quot; component=&#123;About&#125;/&gt;</div><div class="line">  &lt;/Route&gt;</div><div class="line">&lt;/Router&gt;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>上面代码中，用户进入默认加载App组件，当访问<code>/repos</code>时，会在App组件内部加载Repos组件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;App&gt;</div><div class="line">	&lt;Repos /&gt;</div><div class="line">&lt;/App&gt;</div></pre></td></tr></table></figure></p>
+<p>Router组件还可以写成下面的样子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">let routes =</div><div class="line">  &lt;Route path=&quot;/&quot; component=&#123;App&#125;&gt;</div><div class="line">    &lt;Route path=&quot;/repos&quot; component=&#123;Repos&#125;/&gt;</div><div class="line">    &lt;Route path=&quot;/about&quot; component=&#123;About&#125;/&gt;</div><div class="line">  &lt;/Route&gt;;</div><div class="line">&lt;Router routes=&#123;routes&#125; history=&#123;hasHistory&#125;/&gt;</div></pre></td></tr></table></figure></p>
+<p>或者(更推荐)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">const routeConfig = [</div><div class="line">  &#123; path: &apos;/&apos;,</div><div class="line">    component: App,</div><div class="line">    indexRoute: &#123; component: Dashboard &#125;,</div><div class="line">    childRoutes: [</div><div class="line">      &#123; path: &apos;about&apos;, component: About &#125;,</div><div class="line">      &#123; path: &apos;inbox&apos;,</div><div class="line">        component: Inbox,</div><div class="line">        childRoutes: [</div><div class="line">          &#123; path: &apos;/messages/:id&apos;, component: Message &#125;,</div><div class="line">          &#123; path: &apos;messages/:id&apos;,</div><div class="line">            onEnter: function (nextState, replaceState) &#123;</div><div class="line">              replaceState(null, &apos;/messages/&apos; + nextState.params.id)</div><div class="line">            &#125;</div><div class="line">          &#125;</div><div class="line">        ]</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">]</div><div class="line"></div><div class="line">React.render(&lt;Router routes=&#123;routeConfig&#125; /&gt;, document.body)</div></pre></td></tr></table></figure></p>
+<p>App组件可以这样写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">export default React.createClass(&#123;</div><div class="line">  render() &#123;</div><div class="line">    return (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;h1&gt;React Router Tutorial&lt;/h1&gt;</div><div class="line">        &lt;ul role=&quot;nav&quot;&gt;</div><div class="line">          &lt;li&gt;&lt;Link to=&quot;/about&quot;&gt;About&lt;/Link&gt;&lt;/li&gt;</div><div class="line">          &lt;li&gt;&lt;Link to=&quot;/repos&quot;&gt;Repos&lt;/Link&gt;&lt;/li&gt;</div><div class="line">        &lt;/ul&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h5 id="4-path属性"><a href="#4-path属性" class="headerlink" title="4. path属性"></a>4. path属性</h5><p>path属性用来指定路由的匹配规则，这个属性该也可以省略。举个栗子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;Route path=&quot;index&quot; component=&#123;Inbox&#125;&gt;</div><div class="line">  &lt;Route path=&quot;messages/:id&quot; component=&#123;Message&#125; /&gt;</div><div class="line">&lt;/Route&gt;</div></pre></td></tr></table></figure></p>
+<p></p><p style="color:red"> messages/:id 前面一定没有 /  ,否则匹配的路径是 /messages/:id ,不再是 index/messages/:id</p><br>与<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;Route component=&#123;Inbox&#125;&gt;</div><div class="line">  &lt;Route path=&quot;index/messages/:id&quot; component=&#123;Message&#125; /&gt;</div><div class="line">&lt;/Route&gt;</div></pre></td></tr></table></figure><p></p>
+<p>是等价的。</p>
+<h5 id="5-通配符"><a href="#5-通配符" class="headerlink" title="5. 通配符"></a>5. 通配符</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;Route path=&quot;/hello/:name&quot;&gt;</div><div class="line">// 匹配 /hello/michael</div><div class="line">// 匹配 /hello/ryan</div><div class="line"></div><div class="line">&lt;Route path=&quot;/hello(/:name)&quot;&gt;</div><div class="line">// 匹配 /hello</div><div class="line">// 匹配 /hello/michael</div><div class="line">// 匹配 /hello/ryan</div><div class="line"></div><div class="line">&lt;Route path=&quot;/files/*.*&quot;&gt;</div><div class="line">// 匹配 /files/hello.jpg</div><div class="line">// 匹配 /files/hello.html</div><div class="line"></div><div class="line">&lt;Route path=&quot;/files/*&quot;&gt;</div><div class="line">// 匹配 /files/</div><div class="line">// 匹配 /files/a</div><div class="line">// 匹配 /files/a/b</div><div class="line"></div><div class="line">&lt;Route path=&quot;/**/*.jpg&quot;&gt;</div><div class="line">// 匹配 /files/hello.jpg</div><div class="line">// 匹配 /files/path/to/file.jpg</div></pre></td></tr></table></figure>
+<p>通配符规则如下：</p>
+<ol>
+<li><code>:paramName</code><br>:paramName匹配URL的一个部分，直到遇到下一个/、?、#为止。这个路径参数可以通过this.props.params.paramName取出。</li>
+<li><code>()</code><br>()表示URL这个部分是可选的。</li>
+<li><code>*</code><br><code>*</code>匹配任意字符，知道模式里面的下一个字符为止。匹配方式为费贪婪模式。</li>
+<li><code>**</code><br>**匹配任意字符，直到查到下一个<code>/</code>、<code>?</code>、<code>#</code>为止，匹配方式是贪婪方式。</li>
+</ol>
+<p><strong>path属性也可以使用相对路径（不以<code>/</code>开头），匹配到就会相对于父组件的路径。</strong><br><strong>路由匹配规则从上到下执行，一旦匹配就不再匹配其余的规则。故设置参数时特别注意将<span style="color:red;">带参数的路径一般写在路由规则的底部</span>。</strong></p>
+<blockquote>
+<ol>
+<li>URL的<code>query</code>查询字符串<code>/foo？bar=baz</code>，可以用<code>this.props.location.query.bar</code>获取baz值；</li>
+<li><code>/inbox/messages/:id</code>要用<code>this.props.params.id</code>来获取id值；</li>
+<li>URL地址可以用<code>event.target.elements[0].value</code>和<code>this.refs.refName.value</code>来获取。<h5 id="6-IndexRoute组件（默认路由）"><a href="#6-IndexRoute组件（默认路由）" class="headerlink" title="6. IndexRoute组件（默认路由）"></a>6. IndexRoute组件（默认路由）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;Router&gt;</div><div class="line">  &lt;Route path=&quot;/&quot; component=&#123;App&#125;&gt;</div><div class="line">    &lt;Route path=&quot;accounts&quot; component=&#123;Accounts&#125;/&gt;</div><div class="line">    &lt;Route path=&quot;statements&quot; component=&#123;Statements&#125;/&gt;</div><div class="line">  &lt;/Route&gt;</div><div class="line">&lt;/Router&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<p>上面代码访问根路径<code>/</code>,不会加载任何子组件。App组件的<code>this.props.children</code>为<code>null</code>。<br>而IndexRoute就是来解决这个问题，显示指定Home是路由跟组件。（也可以用<code>{this.props.children || }</code>来渲染一些默认的UI组件 ）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;Router&gt;</div><div class="line">  &lt;Route path=&quot;/&quot; component=&#123;App&#125;&gt;</div><div class="line">    &lt;IndexRoute component=&#123;Home&#125;/&gt;</div><div class="line">    &lt;Route path=&quot;accounts&quot; component=&#123;Accounts&#125;/&gt;</div><div class="line">    &lt;Route path=&quot;statements&quot; component=&#123;Statements&#125;/&gt;</div><div class="line">  &lt;/Route&gt;</div><div class="line">&lt;/Router&gt;</div></pre></td></tr></table></figure></p>
+<h5 id="7-Redirect组件"><a href="#7-Redirect组件" class="headerlink" title="7. Redirect组件"></a>7. Redirect组件</h5><p><code>&lt;Redirect&gt;</code>组件用于路由的跳转，即用户访问一个路由，会自动跳转到另一个路由。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;Route path=&quot;inbox&quot; component=&#123;Inbox&#125;&gt;</div><div class="line">  &#123;/* 从 /inbox/messages/:id 跳转到 /messages/:id */&#125;</div><div class="line">  ＜Redirect from=&quot;messages/:id&quot; to=&quot;/messages/:id&quot; /&gt;</div><div class="line">&lt;/Route&gt;</div></pre></td></tr></table></figure></p>
+<p>现在访问<code>/index/message/5</code>，会自动跳转到<code>/message/5</code>。</p>
+<h5 id="8-Link"><a href="#8-Link" class="headerlink" title="8. Link"></a>8. Link</h5><p>Link组件用于取代<code>&lt;a&gt;</code>元素，生成一个链接，允许用户点击后跳转到另一个路由。它基本上就是<code>&lt;a&gt;</code>元素的React版本，可以接受Router的状态。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">render() &#123;</div><div class="line">  return &lt;div&gt;</div><div class="line">    &lt;ul role=&quot;nav&quot;&gt;</div><div class="line">      &lt;li&gt;&lt;Link to=&quot;/about&quot;&gt;About&lt;/Link&gt;&lt;/li&gt;</div><div class="line">      &lt;li&gt;&lt;Link to=&quot;/repos&quot;&gt;Repos&lt;/Link&gt;&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>浏览器解析成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;app&quot;&gt;</div><div class="line"> &lt;div data-reactid=&quot;.0&quot;&gt;</div><div class="line">   &lt;h1 data-reactid=&quot;.0.0&quot;&gt;React Router Tutorial&lt;/h1&gt;</div><div class="line">   &lt;ul role=&quot;nav&quot; data-reactid=&quot;.0.1&quot;&gt;</div><div class="line">     &lt;li data-reactid=&quot;.0.1.0&quot;&gt;</div><div class="line">       &lt;a href=&quot;#/about&quot; data-reactid=&quot;.0.1.0.0&quot;&gt;About123&lt;/a&gt;</div><div class="line">     &lt;/li&gt;</div><div class="line">     &lt;li data-reactid=&quot;.0.1.1&quot;&gt;</div><div class="line">        &lt;a href=&quot;#/repos&quot; data-reactid=&quot;.0.1.1.0&quot;&gt;Repos&lt;/a&gt;</div><div class="line">      &lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">   &lt;/div&gt;</div><div class="line"> &lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>如果希望当前路由与其他路由有不同样式，可以用Link的activeStyle属性，或者使用activeClassName指定当前路由的Class。</p>
+<h5 id="9-IndexLink"><a href="#9-IndexLink" class="headerlink" title="9. IndexLink"></a>9. IndexLink</h5><blockquote>
+<p>个人认为用法基本等同于IndexRoute</p>
+</blockquote>
+<p>连接到根路由，对于根路由来说，activeStyle和activeClassName会失效，或者说总是生效，因为/会匹配任何子路由。而IndexLink组件会使用路径的精确匹配。<br>另一种方法是使用组建的<code>onlyActiveOnIndex</code>属性，也能达到同样效果。<br>实际上，indexlink就是对link组建的onlyacticeonindex属性的包装。</p>
+<h5 id="10-history属性"><a href="#10-history属性" class="headerlink" title="10. history属性"></a>10. history属性</h5><p>前面刚看到Router组建的history属性，可否还有印象？<br>history属性用来监听浏览器地址的变化，并将URl解析成一个地址对象，供React Router 匹配。</p>
+<p>history属性分为三种值：browserHistory、hashHistory、creatMemoryHistory</p>
+<ol>
+<li>hashHistory<br>路有将URL的hash部分（#）切换，URL的形式类似<code>example.com/#/some/path</code>。</li>
+<li>browserHistory<br>浏览器的路由就不再通过Hash完成了，而显示正常的路径<code>example.com/some/path</code>，背后调用的是浏览器的<code>History API</code>。</li>
+<li>createMemoryHistory<br>主要用于服务器渲染。它创建一个内存中的history对象，不与浏览器URL互动。</li>
+</ol>
+<h5 id="11-表单处理"><a href="#11-表单处理" class="headerlink" title="11. 表单处理"></a>11. 表单处理</h5><blockquote>
+<p>Link组件用于正常的用户点击跳转，但是有时还需要表单跳转、点击按钮跳转等操作。这些情况怎么跟React Router对接呢？</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;form onSubmit=&#123;this.handleSubmit&#125;&gt;</div><div class="line">  &lt;input type=&quot;text&quot; placeholder=&quot;userName&quot;/&gt;</div><div class="line">  &lt;input type=&quot;text&quot; placeholder=&quot;repo&quot;/&gt;</div><div class="line">  &lt;button type=&quot;submit&quot;&gt;Go&lt;/button&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
+<p>第一种方法：browserHistory.push<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import &#123; browserHistory &#125; from &apos;react-router&apos;;</div><div class="line">  handleSubmit(event) &#123;</div><div class="line">    event.preventDefault()</div><div class="line">    const userName = event.target.elements[0].value</div><div class="line">    const repo = event.target.elements[1].value</div><div class="line">    const path = `/repos/$&#123;userName&#125;/$&#123;repo&#125;`</div><div class="line">    browserHistory.push(path)</div><div class="line">  &#125;,</div></pre></td></tr></table></figure></p>
+<p>第二种方法：context<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">export default React.createClass(&#123;</div><div class="line"></div><div class="line">  // ask for `router` from context</div><div class="line">  contextTypes: &#123;</div><div class="line">    router: React.PropTypes.object</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  handleSubmit(event) &#123;</div><div class="line">    event.preventDefault()</div><div class="line">    const userName = event.target.elements[0].value</div><div class="line">    const repo = event.target.elements[1].value</div><div class="line">    const path = `/repos/$&#123;userName&#125;/$&#123;repo&#125;`</div><div class="line">    this.context.router.push(path)</div><div class="line">  &#125;,</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h5 id="12-路由钩子"><a href="#12-路由钩子" class="headerlink" title="12. 路由钩子"></a>12. 路由钩子</h5><p>每个路由都有Enter和Leave 钩子，用户进入或者离开时该路由触发。<br>例子：使用onEnter代替<code>&lt;Redirect&gt;</code>组件(还可以用来认证)。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;Route path=&quot;inbox&quot; component=&#123;Inbox&#125;&gt;</div><div class="line">  &lt;Route</div><div class="line">    path=&quot;messages/:id&quot;</div><div class="line">    onEnter=&#123;</div><div class="line">      (&#123;params&#125;, replace) =&gt; replace(`/messages/$&#123;params.id&#125;`)</div><div class="line">    &#125;</div><div class="line">  /&gt;</div><div class="line">&lt;/Route&gt;</div></pre></td></tr></table></figure></p>
+<hr>
+<p>链接：</p>
+<ol>
+<li>阮老师<a href="http://www.ruanyifeng.com/blog/2016/05/react_router.html" target="_blank" rel="external">React Router 使用教程</a>编写。</li>
+<li><a href="https://react-guide.github.io/react-router-cn/index.html" target="_blank" rel="external">React Router</a></li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/18/History Minxin  –路由跳转/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          History Minxin  --路由跳转
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/16/React生命周期/React生命周期/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React生命周期</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2017 AbunuoのBlog
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/winnerweb/hexo-Yilia-Smackdown" target="_blank">Yilia(Smackdown)</a>
+        </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

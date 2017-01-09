@@ -3,18 +3,37 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2015/2 | AbunuoのBlog</title>
+  <title>Redux | AbunuoのBlog</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="AbunuoのBlog">
-<meta property="og:url" content="http://liangmingqing.cn/archives/2015/02/index.html">
+  <meta name="description" content="核心概念
+
+所有的状态存放在Store。组件每次重新渲染，都必须由状态变化引起。
+用户在 UI 上发出action。
+reducer函数接收action，然后根据当前的state，计算出新的state。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redux">
+<meta property="og:url" content="http://liangmingqing.cn/2016/12/20/redux/redux/index.html">
 <meta property="og:site_name" content="AbunuoのBlog">
+<meta property="og:description" content="核心概念
+
+所有的状态存放在Store。组件每次重新渲染，都必须由状态变化引起。
+用户在 UI 上发出action。
+reducer函数接收action，然后根据当前的state，计算出新的state。">
+<meta property="og:image" content="http://liangmingqing.cn/img/1482389496876.png">
+<meta property="og:image" content="http://liangmingqing.cn/img/1482389627719.png">
+<meta property="og:updated_time" content="2017-01-09T03:59:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AbunuoのBlog">
+<meta name="twitter:title" content="Redux">
+<meta name="twitter:description" content="核心概念
+
+所有的状态存放在Store。组件每次重新渲染，都必须由状态变化引起。
+用户在 UI 上发出action。
+reducer函数接收action，然后根据当前的state，计算出新的state。">
+<meta name="twitter:image" content="http://liangmingqing.cn/img/1482389496876.png">
   
     <link rel="alternative" href="/atom.xml" title="AbunuoのBlog" type="application/atom+xml">
   
@@ -177,61 +196,98 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-redux/redux" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/02/26/jQuery多库共存的三种方法/" class="archive-article-date">
-  	<time datetime="2015-02-25T16:00:00.000Z" itemprop="datePublished">Feb 26</time>
+    <div class="article-meta">
+      <a href="/2016/12/20/redux/redux/" class="article-date">
+  	<time datetime="2016-12-19T16:00:00.000Z" itemprop="datePublished">2016-12-20</time>
 </a>
-        </div>
-        <h1 itemprop="name">
-            
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/02/26/jQuery多库共存的三种方法/">jQuery多库共存的三种方法</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Redux
     </h1>
   
 
-        </h1>
-        <div class="article-info info-on-left">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
 	</div>
 
-          
+        
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a>
+	<a class="article-category-link" href="/categories/react/">react</a>
 	</div>
 
 
-          
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>核心概念</p>
+<ul>
+<li>所有的状态存放在Store。组件每次重新渲染，都必须由状态变化引起。</li>
+<li>用户在 UI 上发出action。</li>
+<li>reducer函数接收action，然后根据当前的state，计算出新的state。</li>
+</ul>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p><img src="/img/1482389496876.png"></p>
+<h5 id="Redux-应用的架构"><a href="#Redux-应用的架构" class="headerlink" title="Redux 应用的架构"></a>Redux 应用的架构</h5><p><img src="/img/1482389627719.png"><br>Redux 层保存所有状态，React 组件拿到状态以后，渲染出 HTML 代码。</p>
+
+      
+    </div>
+    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/12/19/Flux架构入门/Flux架构入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Flux架构入门</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
 </article>
 
-  
-  
-    </div></section>
-  
 
-    
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
 
 </div>
       <footer id="footer">
@@ -258,8 +314,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false
