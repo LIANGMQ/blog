@@ -9,34 +9,17 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Js apply＆call方法详解前一段时间研究过javascript的函数apply和call时,最近又在网上看到一些文章对apply方法和call的一些示例,所以在这里我做如下笔记,希望和大家分享…
-
-主要解决以下几个问题：
-
-apply和call的区别在哪里
-什么情况下用apply,什么情况下用call
-apply的其他巧妙用法（一般在什么情况下可以使用apply）">
+  <meta name="description" content="Js apply＆call方法详解前一段时间研究过javascript的函数apply和call时,最近又在网上看到一些文章对apply方法和call的一些示例,所以在这里我做如下笔记,希望和大家分享…  主要解决以下几个问题：  apply和call的区别在哪里 什么情况下用apply,什么情况下用call apply的其他巧妙用法（一般在什么情况下可以使用apply）">
+<meta name="keywords" content="前端,Javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="call()和apply()区别">
 <meta property="og:url" content="http://liangmingqing.cn/2016/02/11/call和apply/call()和apply()区别/index.html">
 <meta property="og:site_name" content="AbunuoのBlog">
-<meta property="og:description" content="Js apply＆call方法详解前一段时间研究过javascript的函数apply和call时,最近又在网上看到一些文章对apply方法和call的一些示例,所以在这里我做如下笔记,希望和大家分享…
-
-主要解决以下几个问题：
-
-apply和call的区别在哪里
-什么情况下用apply,什么情况下用call
-apply的其他巧妙用法（一般在什么情况下可以使用apply）">
+<meta property="og:description" content="Js apply＆call方法详解前一段时间研究过javascript的函数apply和call时,最近又在网上看到一些文章对apply方法和call的一些示例,所以在这里我做如下笔记,希望和大家分享…  主要解决以下几个问题：  apply和call的区别在哪里 什么情况下用apply,什么情况下用call apply的其他巧妙用法（一般在什么情况下可以使用apply）">
 <meta property="og:updated_time" content="2016-11-26T04:20:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="call()和apply()区别">
-<meta name="twitter:description" content="Js apply＆call方法详解前一段时间研究过javascript的函数apply和call时,最近又在网上看到一些文章对apply方法和call的一些示例,所以在这里我做如下笔记,希望和大家分享…
-
-主要解决以下几个问题：
-
-apply和call的区别在哪里
-什么情况下用apply,什么情况下用call
-apply的其他巧妙用法（一般在什么情况下可以使用apply）">
+<meta name="twitter:description" content="Js apply＆call方法详解前一段时间研究过javascript的函数apply和call时,最近又在网上看到一些文章对apply方法和call的一些示例,所以在这里我做如下笔记,希望和大家分享…  主要解决以下几个问题：  apply和call的区别在哪里 什么情况下用apply,什么情况下用call apply的其他巧妙用法（一般在什么情况下可以使用apply）">
   
     <link rel="alternative" href="/atom.xml" title="AbunuoのBlog" type="application/atom+xml">
   
@@ -128,6 +111,8 @@ apply的其他巧妙用法（一般在什么情况下可以使用apply）">
 							
 								<a class="github" target="_blank" href="https://github.com/Abunuo" title="github">github</a>
 					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/abunuo/activities" title="zhihu">zhihu</a>
+					        
 								<a class="weibo" target="_blank" href="http://weibo.com/u/3908506607/home?topnav=1&wvr=6" title="weibo">weibo</a>
 					        
 								<a class="facebook" target="_blank" href="https://www.facebook.com/profile.php?id=100014780655438" title="facebook">facebook</a>
@@ -197,6 +182,8 @@ apply的其他巧妙用法（一般在什么情况下可以使用apply）">
 				<div class="social">
 					
 						<a class="github" target="_blank" href="https://github.com/Abunuo" title="github">github</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/abunuo/activities" title="zhihu">zhihu</a>
 			        
 						<a class="weibo" target="_blank" href="http://weibo.com/u/3908506607/home?topnav=1&wvr=6" title="weibo">weibo</a>
 			        

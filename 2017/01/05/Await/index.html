@@ -9,22 +9,17 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="await/async 是 ES7 最重要特性之一，相对于Ajax、Promise、Generators等，它是目前为止 JS 最佳的异步解决方案（回调函数、事件监听、发布/订阅、Promise对象）了。
-
-插一句：这里我就只介绍下Generators，详细可以去看阮老师的Generators函数的含义与用法">
+  <meta name="description" content="await/async 是 ES7 最重要特性之一，相对于Ajax、Promise、Generators等，它是目前为止 JS 最佳的异步解决方案（回调函数、事件监听、发布/订阅、Promise对象）了。  插一句：这里我就只介绍下Generators，详细可以去看阮老师的Generators函数的含义与用法">
+<meta name="keywords" content="前端,JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Async/Await">
+<meta property="og:title" content="Async&#x2F;Await">
 <meta property="og:url" content="http://liangmingqing.cn/2017/01/05/Await/index.html">
 <meta property="og:site_name" content="AbunuoのBlog">
-<meta property="og:description" content="await/async 是 ES7 最重要特性之一，相对于Ajax、Promise、Generators等，它是目前为止 JS 最佳的异步解决方案（回调函数、事件监听、发布/订阅、Promise对象）了。
-
-插一句：这里我就只介绍下Generators，详细可以去看阮老师的Generators函数的含义与用法">
-<meta property="og:updated_time" content="2017-01-11T03:56:09.000Z">
+<meta property="og:description" content="await/async 是 ES7 最重要特性之一，相对于Ajax、Promise、Generators等，它是目前为止 JS 最佳的异步解决方案（回调函数、事件监听、发布/订阅、Promise对象）了。  插一句：这里我就只介绍下Generators，详细可以去看阮老师的Generators函数的含义与用法">
+<meta property="og:updated_time" content="2017-01-11T04:02:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Async/Await">
-<meta name="twitter:description" content="await/async 是 ES7 最重要特性之一，相对于Ajax、Promise、Generators等，它是目前为止 JS 最佳的异步解决方案（回调函数、事件监听、发布/订阅、Promise对象）了。
-
-插一句：这里我就只介绍下Generators，详细可以去看阮老师的Generators函数的含义与用法">
+<meta name="twitter:title" content="Async&#x2F;Await">
+<meta name="twitter:description" content="await/async 是 ES7 最重要特性之一，相对于Ajax、Promise、Generators等，它是目前为止 JS 最佳的异步解决方案（回调函数、事件监听、发布/订阅、Promise对象）了。  插一句：这里我就只介绍下Generators，详细可以去看阮老师的Generators函数的含义与用法">
   
     <link rel="alternative" href="/atom.xml" title="AbunuoのBlog" type="application/atom+xml">
   
@@ -116,6 +111,8 @@
 							
 								<a class="github" target="_blank" href="https://github.com/Abunuo" title="github">github</a>
 					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/abunuo/activities" title="zhihu">zhihu</a>
+					        
 								<a class="weibo" target="_blank" href="http://weibo.com/u/3908506607/home?topnav=1&wvr=6" title="weibo">weibo</a>
 					        
 								<a class="facebook" target="_blank" href="https://www.facebook.com/profile.php?id=100014780655438" title="facebook">facebook</a>
@@ -186,6 +183,8 @@
 					
 						<a class="github" target="_blank" href="https://github.com/Abunuo" title="github">github</a>
 			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/abunuo/activities" title="zhihu">zhihu</a>
+			        
 						<a class="weibo" target="_blank" href="http://weibo.com/u/3908506607/home?topnav=1&wvr=6" title="weibo">weibo</a>
 			        
 						<a class="facebook" target="_blank" href="https://www.facebook.com/profile.php?id=100014780655438" title="facebook">facebook</a>
@@ -242,8 +241,9 @@
 <p><strong>插一句</strong>：这里我就只介绍下<code>Generators</code>，详细可以去看阮老师的<a href="http://www.ruanyifeng.com/blog/2015/04/generator.html" target="_blank" rel="external">Generators函数的含义与用法</a></p>
 <a id="more"></a>
 <h5 id="强劲的Generators"><a href="#强劲的Generators" class="headerlink" title="强劲的Generators"></a>强劲的Generators</h5><blockquote>
-<p>小总结：调用Generator函数，返回一个遍历器对象，代表Generator函数的内部指针。以后，每次调用遍历器对象的next方法，就会返回一个有着value和done两个属性的对象。value属性表示当前的内部状态的值，是yield语句后面那个表达式的值；done属性是一个布尔值，表示是否遍历结束。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//单纯的暂缓执行函数（不包含next方法）</div><div class="line">function* f() &#123;</div><div class="line">  console.log(&apos;执行了！&apos;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">var generator = f();</div><div class="line"></div><div class="line">setTimeout(function () &#123;</div><div class="line">  generator.next()</div><div class="line">&#125;, 2000);</div><div class="line">//输出结果为：2秒以后打印“执行了”。</div></pre></td></tr></table></figure></p>
+<p>小总结：调用Generator函数，返回一个遍历器对象，代表Generator函数的内部指针。以后，每次调用遍历器对象的next方法，就会返回一个有着value和done两个属性的对象。value属性表示当前的内部状态的值，是yield语句后面那个表达式的值；done属性是一个布尔值，表示是否遍历结束。</p>
 </blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//单纯的暂缓执行函数（不包含next方法）</div><div class="line">function* f() &#123;</div><div class="line">  console.log(&apos;执行了！&apos;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">var generator = f();</div><div class="line"></div><div class="line">setTimeout(function () &#123;</div><div class="line">  generator.next()</div><div class="line">&#125;, 2000);</div><div class="line">//输出结果为：2秒以后打印“执行了”。</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//generator函数(包含next方法)</div><div class="line">function* helloWorldGenerator() &#123;</div><div class="line">  yield &apos;hello&apos;;</div><div class="line">  yield &apos;world&apos;;</div><div class="line">  return &apos;ending&apos;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var hw = helloWorldGenerator();</div><div class="line">//输出为：</div><div class="line">hw.next()</div><div class="line">// &#123; value: &apos;hello&apos;, done: false &#125;</div><div class="line"></div><div class="line">hw.next()</div><div class="line">// &#123; value: &apos;world&apos;, done: false &#125;</div><div class="line"></div><div class="line">hw.next()</div><div class="line">// &#123; value: &apos;ending&apos;, done: true &#125;</div><div class="line"></div><div class="line">hw.next()</div><div class="line">// &#123; value: undefined, done: true &#125;</div></pre></td></tr></table></figure>
 <hr>
 <p>言归正传，下面来看下<code>Async/Await</code>方法<br>看个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var sleep = function (time) &#123;</div><div class="line">    return new Promise(function (resolve, reject) &#123;</div><div class="line">        setTimeout(function () &#123;</div><div class="line">            resolve();</div><div class="line">        &#125;, time);</div><div class="line">    &#125;)</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var start = async function () &#123;</div><div class="line">    // 在这里使用起来就像同步代码那样直观</div><div class="line">    console.log(&apos;start&apos;);</div><div class="line">    await sleep(3000);</div><div class="line">    console.log(&apos;end&apos;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">start();</div><div class="line"></div><div class="line">//输出结果：控制台先输出start，稍等3秒，输出end</div></pre></td></tr></table></figure></p>

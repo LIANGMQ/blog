@@ -9,43 +9,17 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="HTTP状态码（HTTP Status Code）是用来表示网页服务器HTTP响应状态的3位数字代码。
-
-所有状态码的第一个数字代表了响应的五种状态之一。
-
-1XX 消息
-2XX 成功
-3XX 重定向
-4XX 客户端消息
-5XX 服务器端消息
-参考文献">
+  <meta name="description" content="HTTP状态码（HTTP Status Code）是用来表示网页服务器HTTP响应状态的3位数字代码。  所有状态码的第一个数字代表了响应的五种状态之一。  1XX 消息 2XX 成功 3XX 重定向 4XX 客户端消息 5XX 服务器端消息 参考文献">
+<meta name="keywords" content="前端,http">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTTP状态码">
 <meta property="og:url" content="http://liangmingqing.cn/2017/01/10/HTTP状态码/index.html">
 <meta property="og:site_name" content="AbunuoのBlog">
-<meta property="og:description" content="HTTP状态码（HTTP Status Code）是用来表示网页服务器HTTP响应状态的3位数字代码。
-
-所有状态码的第一个数字代表了响应的五种状态之一。
-
-1XX 消息
-2XX 成功
-3XX 重定向
-4XX 客户端消息
-5XX 服务器端消息
-参考文献">
-<meta property="og:updated_time" content="2017-01-11T03:56:28.000Z">
+<meta property="og:description" content="HTTP状态码（HTTP Status Code）是用来表示网页服务器HTTP响应状态的3位数字代码。  所有状态码的第一个数字代表了响应的五种状态之一。  1XX 消息 2XX 成功 3XX 重定向 4XX 客户端消息 5XX 服务器端消息 参考文献">
+<meta property="og:updated_time" content="2017-01-11T04:01:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP状态码">
-<meta name="twitter:description" content="HTTP状态码（HTTP Status Code）是用来表示网页服务器HTTP响应状态的3位数字代码。
-
-所有状态码的第一个数字代表了响应的五种状态之一。
-
-1XX 消息
-2XX 成功
-3XX 重定向
-4XX 客户端消息
-5XX 服务器端消息
-参考文献">
+<meta name="twitter:description" content="HTTP状态码（HTTP Status Code）是用来表示网页服务器HTTP响应状态的3位数字代码。  所有状态码的第一个数字代表了响应的五种状态之一。  1XX 消息 2XX 成功 3XX 重定向 4XX 客户端消息 5XX 服务器端消息 参考文献">
   
     <link rel="alternative" href="/atom.xml" title="AbunuoのBlog" type="application/atom+xml">
   
@@ -137,6 +111,8 @@
 							
 								<a class="github" target="_blank" href="https://github.com/Abunuo" title="github">github</a>
 					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/abunuo/activities" title="zhihu">zhihu</a>
+					        
 								<a class="weibo" target="_blank" href="http://weibo.com/u/3908506607/home?topnav=1&wvr=6" title="weibo">weibo</a>
 					        
 								<a class="facebook" target="_blank" href="https://www.facebook.com/profile.php?id=100014780655438" title="facebook">facebook</a>
@@ -206,6 +182,8 @@
 				<div class="social">
 					
 						<a class="github" target="_blank" href="https://github.com/Abunuo" title="github">github</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/abunuo/activities" title="zhihu">zhihu</a>
 			        
 						<a class="weibo" target="_blank" href="http://weibo.com/u/3908506607/home?topnav=1&wvr=6" title="weibo">weibo</a>
 			        
@@ -285,7 +263,10 @@
 <li><code>204 No Content</code><br><strong>服务器成功处理请求，但不需要返回任何实体内容，并且希望返回更新了的元信息。</strong></li>
 <li><code>205 Reset Content</code><br><strong>服务器成功处理了请求，且没有返回任何内容</strong>。但是与204响应不同，返回此状态码的响应要求请求者重置文档视图。</li>
 <li><code>206 Partial Content</code><br>服务器已经成功处理了部分GET请求;<br>该请求必须包含Range头信息来指示客户端希望得到的内容范围，并且可能包含If-Range来作为请求条件。</li>
-<li><code>207 Multi-Status</code><h4 id="3XX-重定向"><a href="#3XX-重定向" class="headerlink" title="3XX 重定向"></a><span id="T3">3XX 重定向</span></h4>这类状态码代表需要客户端采取进一步的操作才能完成请求。通常，这些状态码用来重定向，后续的请求地址（重定向目标）在本次响应的Location域中指明。<br>当且仅当后续的请求所使用的方法是GET或者HEAD时，用户浏览器才可以在没有用户介入的情况下自动提交所需要的后续请求。<br>客户端应当自动监测无限循环重定向，按照HTTP/1.0版规范的建议，<strong>浏览器不应自动访问超过5次的重定向</strong>。</li>
+<li><code>207 Multi-Status</code></li>
+</ol>
+<h4 id="3XX-重定向"><a href="#3XX-重定向" class="headerlink" title="3XX 重定向"></a><span id="T3">3XX 重定向</span></h4><p>这类状态码代表需要客户端采取进一步的操作才能完成请求。通常，这些状态码用来重定向，后续的请求地址（重定向目标）在本次响应的Location域中指明。<br>当且仅当后续的请求所使用的方法是GET或者HEAD时，用户浏览器才可以在没有用户介入的情况下自动提交所需要的后续请求。<br>客户端应当自动监测无限循环重定向，按照HTTP/1.0版规范的建议，<strong>浏览器不应自动访问超过5次的重定向</strong>。</p>
+<ol>
 <li><code>300 Multiple Choices</code><br>被请求的资源有一系列可供选择的回馈信息，每个都有自己特定的地址和浏览器驱动的商议信息。用户或浏览器能够自行选择一个首选的地址进行重定向。</li>
 <li><code>301 Moved Permanently</code><br>被请求的资源已永久移动到新位置，并且将来任何对此资源的引用都应该使用本响应返回的若干个URI之一。</li>
 <li><code>302 Found</code><br>请求的资源现在临时从不同的URI响应请求。由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求。只有在Cache-Control或Expires中进行了指定的情况下，这个响应才是可缓存的。</li>
@@ -293,7 +274,10 @@
 <li><code>304 Not Modified</code><br>304响应禁止包含消息体，因此始终以消息头后的第一个空行结尾。</li>
 <li><code>305 Use Proxy</code><br>被请求的资源必须通过指定的代理才能被访问。</li>
 <li><code>306 Switch Proxy</code><br>在最新版的规范中，306状态码已经不再被使用。</li>
-<li><code>307 Temporary Redirect</code><br>请求的资源现在临时从不同的URI响应请求。<h4 id="4XX-客户端错误"><a href="#4XX-客户端错误" class="headerlink" title="4XX 客户端错误"></a><span id="T4">4XX 客户端错误</span></h4>这类的状态码代表了客户端看起来可能发生了错误，妨碍了服务器的处理。这些状态码适用于任何请求方法。浏览器应当向用户显示任何包含在此类错误响应中的实体内容。</li>
+<li><code>307 Temporary Redirect</code><br>请求的资源现在临时从不同的URI响应请求。</li>
+</ol>
+<h4 id="4XX-客户端错误"><a href="#4XX-客户端错误" class="headerlink" title="4XX 客户端错误"></a><span id="T4">4XX 客户端错误</span></h4><p>这类的状态码代表了客户端看起来可能发生了错误，妨碍了服务器的处理。这些状态码适用于任何请求方法。浏览器应当向用户显示任何包含在此类错误响应中的实体内容。</p>
+<ol>
 <li><code>400 Bad Request</code><br>由于包含<strong>语法错误</strong>，当前请求无法被服务器理解。除非进行修改，否则客户端不应该重复提交这个请求。</li>
 <li><code>401 Unauthorized</code><br>当前请求需要用户验证。</li>
 <li><code>402 Payment Required</code><br>该状态码是为了将来可能的需求而预留的。</li>
@@ -318,7 +302,10 @@
 <li><code>424 Failed Dependency</code><br>由于之前的某个请求发生的错误，导致当前请求失败。</li>
 <li><code>426 Upgrade Required</code><br>客户端应当切换到TLS/1.0。</li>
 <li><code>449 Retry With</code><br>由微软扩展，代表请求应当在执行完适当的操作后进行重试。</li>
-<li><code>451 Unavailable For Legal Reasons</code><br>（由IETF在2015核准后新增加）该访问因法律的要求而被拒绝。<h4 id="5XX-服务器错误"><a href="#5XX-服务器错误" class="headerlink" title="5XX 服务器错误"></a><span id="T5">5XX 服务器错误</span></h4>这类状态码代表了服务器在处理请求的过程中有错误或者异常状态发生，也有可能是服务器意识到以当前的软硬件资源无法完成对请求的处理。<br>浏览器应当向用户展示任何在当前响应中被包含的实体。<br>这些状态码适用于任何响应方法。</li>
+<li><code>451 Unavailable For Legal Reasons</code><br>（由IETF在2015核准后新增加）该访问因法律的要求而被拒绝。</li>
+</ol>
+<h4 id="5XX-服务器错误"><a href="#5XX-服务器错误" class="headerlink" title="5XX 服务器错误"></a><span id="T5">5XX 服务器错误</span></h4><p>这类状态码代表了服务器在处理请求的过程中有错误或者异常状态发生，也有可能是服务器意识到以当前的软硬件资源无法完成对请求的处理。<br>浏览器应当向用户展示任何在当前响应中被包含的实体。<br>这些状态码适用于任何响应方法。</p>
+<ol>
 <li><code>500 Internal Server Error</code><br><strong>服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理</strong>。一般来说，这个问题都会在服务器的程序码出错时出现。</li>
 <li><code>501 Not Implemented</code><br><strong>服务器不支持当前请求所需要的某个功能</strong>。当服务器无法识别请求的方法，并且无法支持其对任何资源的请求。</li>
 <li><code>502 Bad Gateway</code><br>作为网关或者代理工作的服务器尝试执行请求时，从上游服务器接收到无效的响应。</li>
