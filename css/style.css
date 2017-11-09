@@ -111,6 +111,10 @@ ol {
   list-style: decimal;
   padding-left: 20px;
 }
+::selection {
+  background: #bbb;
+  color: #fff;
+}
 ul {
   list-style: none;
 }
