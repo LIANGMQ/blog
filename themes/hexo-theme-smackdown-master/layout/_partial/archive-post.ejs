@@ -4,10 +4,15 @@
       	<div class="article-meta">
 	      	<%- partial('post/date', {class_name: 'archive-article-date', date_format: 'MMM D'}) %>
         </div>
-    	 <%- partial('post/title', {class_name: 'archive-article-title'}) %>
+        <h1 itemprop="name">
+            <%- partial('post/title', {class_name: 'archive-article-title'}) %>
+        </h1>
         <div class="article-info info-on-left">
           <%- partial('post/tag') %>
           <%- partial('post/category') %>
+          <% if (theme.leancloud_visitors.enable) { %>
+            <%- partial('post/viewCounter') %>
+          <% } %>
         </div>
         <div class="clearfix"></div>
     </header>

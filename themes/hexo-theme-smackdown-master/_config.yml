@@ -1,4 +1,4 @@
-# Header
+#Header
 menu:
   主页: /
   所有文章: /archives
@@ -6,14 +6,14 @@ menu:
 
 # SubNav
 subnav:
-  # github: "#"
-  # zhihu: "#"
-  # mail: "#"
+  github: "https://github.com/Abunuo"
+  zhihu: "https://www.zhihu.com/people/abunuo/activities"
+  # mail: "http://liangmingqing315@163.com"
   # qq: "#"
-  # weibo: "#"
+  weibo: "http://weibo.com/u/3908506607/home?topnav=1&wvr=6"
   # rss: "#"
   #douban: "#"
-  #facebook: "#"
+  facebook: "https://www.facebook.com/profile.php?id=100014780655438"
   #google: "#"
   #twitter: "#"
   #linkedin: "#"
@@ -21,10 +21,17 @@ subnav:
 rss: /atom.xml
 
 # Content
-# excerpt_link: 阅读全文
-excerpt_link: more
+excerpt_link: 阅读全文
+# excerpt_link: more
 fancybox: true
 mathjax: true
+
+#widgets: #配置页脚显示哪些小挂件
+#  - category
+#  - tags
+#  - tagcloud
+#  - recent_posts
+#  - blogroll
 
 # 是否开启动画效果
 animate: true
@@ -36,10 +43,10 @@ open_in_new: false
 # baidu_tongji: true
 # google_analytics: true
 
-favicon: /favicon.png
+favicon: /img/1030.gif
 
 #你的头像url
-avatar: http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg
+avatar: /img/head.jpg
 
 #是否开启分享
 share: true
@@ -51,6 +58,12 @@ share: true
 #是否开启云标签
 tagcloud: true
 
+#是否开启文章阅读量
+leancloud_visitors:
+  enable: false
+  app_id: your_app_id
+  app_key: your_app_key
+
 
 #是否开启友情链接
 #不开启——
@@ -59,10 +72,10 @@ tagcloud: true
 friends:
   smackdown: https://github.com/winnerweb/hexo-theme-smackdown
 #是否开启“关于我”。
-#不开启——
-aboutme: false
+# 不开启——
+#aboutme: true
 #开启——
-# aboutme: 
+aboutme: "Line code fun: people did not, the code is still.."
 
 swift_search:
   enable: true

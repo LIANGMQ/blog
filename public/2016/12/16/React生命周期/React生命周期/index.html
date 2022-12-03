@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>React生命周期 | AbunuoのBlog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在组件的整个生命周期中，随着该组件的props或者state发生改变，其DOM表现也会有相应的变化。一个组件就是一个状态机，对于特定地输入，它总返回一致的输出。其中一共提供了10个不同的周期（API）">
+<meta name="keywords" content="前端,react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React生命周期">
+<meta property="og:url" content="https://abunuo.github.io/2016/12/16/React生命周期/React生命周期/index.html">
+<meta property="og:site_name" content="AbunuoのBlog">
+<meta property="og:description" content="在组件的整个生命周期中，随着该组件的props或者state发生改变，其DOM表现也会有相应的变化。一个组件就是一个状态机，对于特定地输入，它总返回一致的输出。其中一共提供了10个不同的周期（API）">
+<meta property="og:locale" content="zn">
+<meta property="og:image" content="https://abunuo.github.io/img/1482306008922.png">
+<meta property="og:updated_time" content="2017-01-09T03:58:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React生命周期">
+<meta name="twitter:description" content="在组件的整个生命周期中，随着该组件的props或者state发生改变，其DOM表现也会有相应的变化。一个组件就是一个状态机，对于特定地输入，它总返回一致的输出。其中一共提供了10个不同的周期（API）">
+<meta name="twitter:image" content="https://abunuo.github.io/img/1482306008922.png">
+  
+    <link rel="alternative" href="/atom.xml" title="AbunuoのBlog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/1030.gif">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/head.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Abunuo</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">(͡·̮̃·̃) 撸码的乐趣，“人都没了，™代码还在”</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Abunuo" title="github">github</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/abunuo/activities" title="zhihu">zhihu</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/3908506607/home?topnav=1&wvr=6" title="weibo">weibo</a>
+					        
+								<a class="facebook" target="_blank" href="https://www.facebook.com/profile.php?id=100014780655438" title="facebook">facebook</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/react/" style="font-size: 16.67px;">react</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/前端/" style="font-size: 20px;">前端</a> <a href="/tags/跨域/" style="font-size: 10px;">跨域</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/winnerweb/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">Line code fun: people did not, the code is still..</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Abunuo</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/head.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Abunuo</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">(͡·̮̃·̃) 撸码的乐趣，“人都没了，™代码还在”</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Abunuo" title="github">github</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/abunuo/activities" title="zhihu">zhihu</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/3908506607/home?topnav=1&wvr=6" title="weibo">weibo</a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/profile.php?id=100014780655438" title="facebook">facebook</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-React生命周期/React生命周期" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/16/React生命周期/React生命周期/" class="article-date">
+  	<time datetime="2016-12-15T16:00:00.000Z" itemprop="datePublished">2016-12-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      React生命周期
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/react/">react</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>在组件的整个生命周期中，随着该组件的props或者state发生改变，其DOM表现也会有相应的变化。一个组件就是一个状态机，对于特定地输入，它总返回一致的输出。其中一共提供了10个不同的周期（API）</p>
+</blockquote>
+<a id="more"></a>
+<p>一个React组件的生命周期分为三个部分：实例化、存在期和销毁期。<br><img src="/img/1482306008922.png"></p>
+<h4 id="实例化"><a href="#实例化" class="headerlink" title="实例化"></a>实例化</h4><hr>
+<p>当组件在客户端被实例化，第一次被创建时，以下方法依次被调用：</p>
+<ol>
+<li>getDefaultProps</li>
+<li>getInitialState</li>
+<li>componentWillMount</li>
+<li>render</li>
+<li>componentDidMount</li>
+</ol>
+<blockquote>
+<p>实例化完成后的更新（一个组件只执行一次<strong>getDefaultProps</strong>）</p>
+<pre><code>1. getInitialState
+2. componentWillMount
+3. render
+4. componentDidMount
+</code></pre></blockquote>
+<p>当组件在服务端被实例化，首次被创建时，以下方法依次被调用：</p>
+<ol>
+<li>getDefaultProps</li>
+<li>getInitialState</li>
+<li>componentWillMount</li>
+<li>render</li>
+</ol>
+<p>componentDidMount不会再服务器端被渲染的过程中调用。</p>
+<h5 id="getDefaultProps"><a href="#getDefaultProps" class="headerlink" title="getDefaultProps"></a><code>getDefaultProps</code></h5><p>对于每个组件实例来讲，这个方法只会调用一次，该组件类的所有后续应用，getDefaultMount将不会在被调用，其返回对象可以用与设置默认的props值，会在实例中共享。</p>
+<h5 id="getInitialState"><a href="#getInitialState" class="headerlink" title="getInitialState"></a><code>getInitialState</code></h5><p>对于组件的每个实例来说，这个方法的调用<strong>有且只有一次</strong>，用来初始化每个实例的 state，在这个方法里，可以访问组件的 props。每一个React组件都有自己的 state，其与 props 的区别在于 state只存在组件的内部，props 在所有实例中共享。</p>
+<p>getInitialState 和 getDefaultPops 的调用是有区别的，getDefaultPops 是对于<strong>组件类</strong>来说只调用一次，后续该类的应用都不会被调用，而 getInitialState 是对于<strong>每个组件实例</strong>来讲都会调用，并且只调一次。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">var LikeButton = React.createClass(&#123;</div><div class="line">  getInitialState: function() &#123;</div><div class="line">    return &#123;liked: false&#125;;</div><div class="line">  &#125;,</div><div class="line">  handleClick: function(event) &#123;</div><div class="line">    this.setState(&#123;liked: !this.state.liked&#125;);</div><div class="line">  &#125;,</div><div class="line">  render: function() &#123;</div><div class="line">    var text = this.state.liked ? &apos;like&apos; : &apos;haven\&apos;t liked&apos;;</div><div class="line">    return (</div><div class="line">      &lt;p onClick=&#123;this.handleClick&#125;&gt;</div><div class="line">        You &#123;text&#125; this. Click to toggle.</div><div class="line">      &lt;/p&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  &lt;LikeButton /&gt;,</div><div class="line">  document.getElementById(&apos;example&apos;)</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p>每次修改state，都会重新渲染组件，实例化后通过state更新组件，会依次调用下列方法:</p>
+<ol>
+<li>shouldComponentUpdate</li>
+<li>componentWillUpdate</li>
+<li>render</li>
+<li>componentDidUpdate</li>
+</ol>
+<p><strong>更改this.state时用this.setState方法来修改。</strong></p>
+<h5 id="componentWillMount"><a href="#componentWillMount" class="headerlink" title="componentWillMount"></a><code>componentWillMount</code></h5><p>该方法在首次渲染之前调用，也是在render调用之前修改state的最后一次机会。</p>
+<h5 id="render"><a href="#render" class="headerlink" title="render"></a><code>render</code></h5><p>该方法会创建一个虚拟DOM，用来表示组件的输出。对于一个组件来讲，render方法是唯一一个必需的方法。render方法需要满足下面几点：</p>
+<ol>
+<li>只能通过 this.props 和 this.state 访问数据（不能修改）</li>
+<li>可以返回 null,false 或者任何React组件</li>
+<li>只能出现一个顶级组件，不能返回一组元素</li>
+<li>不能改变组件的状态</li>
+<li>不能修改DOM的输出</li>
+</ol>
+<p>render方法返回的结果并不是真正的DOM元素，而是一个虚拟的表现，类似于一个DOM tree的结构的对象。react之所以效率高，就是这个原因。</p>
+<h5 id="componentDidMount"><a href="#componentDidMount" class="headerlink" title="componentDidMount"></a><code>componentDidMount</code></h5><p>该方法不会在服务端被渲染的过程中调用。该方法被调用时，已经渲染出真实的 DOM，可以再该方法中通过 <strong>ReactDOM.findDOMNode() </strong>访问到真实的 DOM(也可以使用 <strong>this.getDOMNode()</strong>)。</p>
+<blockquote>
+<p>由于 this.refs.[refName] 属性获取的是真实 DOM ，所以必须等到虚拟 DOM 插入文档以后，才能使用这个属性，否则会报错，或者用nextTick()方法。</p>
+</blockquote>
+<h4 id="存在期"><a href="#存在期" class="headerlink" title="存在期"></a>存在期</h4><hr>
+<p>此时组件已经渲染好并且用户可以与它进行交互，比如鼠标点击，手指点按，或者其它的一些事件，导致应用状态的改变，你将会看到下面的方法依次被调用：</p>
+<ol>
+<li>componentWillReceiveProps</li>
+<li>shouldComponentUpdate</li>
+<li>componentWillUpdate</li>
+<li>render</li>
+<li>componentDidUpdate</li>
+</ol>
+<h5 id="componentWillReceiveProps"><a href="#componentWillReceiveProps" class="headerlink" title="componentWillReceiveProps"></a><code>componentWillReceiveProps</code></h5><p>组件的props属性可以通过父组件来更改，这是，componentWillReceiveProps将被调用。可以在这个方法里更新 state,以触发 render 方法重新渲染组件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">componentWillReceiveProps: function(nextProps)&#123;</div><div class="line">    if(nextProps.checked !== undefined)&#123;</div><div class="line">        this.setState(&#123;</div><div class="line">            checked: nextProps.checked</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="shouldComponentUpdate"><a href="#shouldComponentUpdate" class="headerlink" title="shouldComponentUpdate"></a><code>shouldComponentUpdate</code></h5><p>如果你确定组件的 props 或者 state 的改变不需要重新渲染，可以通过在这个方法里通过返回 false 来阻止组件的重新渲染，返回 false 则不会执行 render 以及后面的 componentWillUpdate，componentDidUpdate 方法。<br>这种方法在大多数情况下没在开发中使用。</p>
+<h5 id="componentWillUpdate"><a href="#componentWillUpdate" class="headerlink" title="componentWillUpdate"></a><code>componentWillUpdate</code></h5><p>这个方法和 componentWillMount 类似，在组件接收到了新的 props 或者 state 即将进行重新渲染前，componentWillUpdate(object nextProps, object nextState) 会被调用，注意不要在此方面里再去更新 props 或者 state。</p>
+<h5 id="componentDidUpdate"><a href="#componentDidUpdate" class="headerlink" title="componentDidUpdate"></a><code>componentDidUpdate</code></h5><p>这个方法和 componentDidMount 类似，在组件重新被渲染之后，componentDidUpdate(object prevProps, object prevState) 会被调用。可以在这里访问并修改 DOM。</p>
+<h4 id="销毁时"><a href="#销毁时" class="headerlink" title="销毁时"></a>销毁时</h4><hr>
+<h5 id="componentWillUnmount"><a href="#componentWillUnmount" class="headerlink" title="componentWillUnmount"></a><code>componentWillUnmount</code></h5><p>每当React使用完一个组件，这个组件必须从 DOM 中卸载后被销毁，此时 componentWillUnmout 会被执行，完成所有的清理和销毁工作，在 componentDidMount 中添加的任务都需要在该方法中撤销，如创建的定时器或事件监听器。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/17/初试React Router/初试React Router/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          初试React Router
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/18/跨域问题分析/Nginx反向代理机制解决Ajax跨域问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Nginx反向代理机制解决Ajax跨域问题</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2017 AbunuoのBlog
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/winnerweb/hexo-Yilia-Smackdown" target="_blank">Yilia(Smackdown)</a>
+        </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </div>
+</body>
+</html>

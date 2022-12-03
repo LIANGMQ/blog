@@ -4,15 +4,15 @@
 
 # Site
 title: AbunuoのBlog
-subtitle:
+subtitle: "(͡·̮̃·̃) 撸码的乐趣，“人都没了，™代码还在”"
 description:
 author: Abunuo
-language:
+language: zn
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://liangmingqing.cn
+url: https://abunuo.github.io/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -63,11 +63,11 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: hexo-theme-smackdown-master 
+theme: hexo-theme-smackdown-master
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
-deploy: 
+deploy:
   type: git
   repository: git@github.com:Abunuo/abunuo.github.io.git
-  branch: master 
+  branch: master
